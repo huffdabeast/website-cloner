@@ -1,0 +1,163 @@
+{
+  "colors": [
+    {
+      "id": "top",
+      "cls": "relative flex min-h-[calc(100svh-4rem)] flex-col justify-center overflow-hidden ",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "research",
+      "cls": "relative bg-brand text-white px-6 md:px-10 py-16 md:py-24 lg:py-28 ",
+      "bg": "rgb(62, 87, 218)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "id": "problem",
+      "cls": "relative bg-studio text-ink px-6 md:px-10 py-16 md:py-24 lg:py-28 ",
+      "bg": "rgb(246, 246, 246)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "",
+      "cls": "pin-spacer",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "",
+      "cls": "relative bg-studio text-ink px-6 md:px-10 py-16 md:py-24 lg:py-28 ",
+      "bg": "rgb(246, 246, 246)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "matters",
+      "cls": "relative bg-paper text-ink px-6 md:px-10 py-16 md:py-24 lg:py-28 ",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "team",
+      "cls": "relative bg-studio text-ink px-6 md:px-10 py-16 md:py-24 lg:py-28 ",
+      "bg": "rgb(246, 246, 246)",
+      "color": "rgb(26, 26, 26)"
+    },
+    {
+      "id": "",
+      "cls": "relative bg-paper text-ink px-6 md:px-10 py-16 md:py-24 lg:py-28 border-b border",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)"
+    }
+  ],
+  "problem": {
+    "html": "The Problem With\nNext-Token Prediction\nProblem.01\n[01]\nLong Horizon Planning\n\nPlanning and decision making in a business are long-horizoned, unconstrained and always evolving.\n\nProblem.02\n[02]\nDynamic Environment\n\nBusiness ecosystems constantly shift due to market volatility, competitor actions, and macroeconomic disruptions, requiring internal models that adapt continuously in real time.\n\nProblem.03\n[03]\nInference efficiency\n\nRunning high-frequency simulations, causal reasoning, and multi-agent operations at scale demands low-latency, cost-effective architectures to support autonomous business workflows.\n\nAutoregressive next-token prediction architectures don’t really work in a business since it is a living system of parts, processes and decisions that is only partially observable and constantly changing.\n\nEvery single decision can ripple through thousands of downstream steps across multiple departments and processes.",
+    "imgs": []
+  },
+  "team": {
+    "html": "Founding Team\n[01]\n\nFounded by Maluuba co-founders, Skyfall AI is building foundational World Modeling technology that will transform how businesses operate. Maluuba was an early pioneer of the “Deep Learning” era which paved the path for the Transformers and LLMs breakthroughs. The Maluuba founders closely worked with Turing Award winners Yoshua Bengio and Richard Sutton. Microsoft acquired Maluuba and the team became Microsoft Research Canada.\n\n[02]\n\nTogether, they bring more than 50 years of combined experience across fundamental science research and zero to one AI native product development as they are now shape the next era of AI.\n\nCo-founded Maluuba\nSam Pasupalak\nCo-founded Maluuba\nKaheer Suleman\nCo-founded Ubiq (YC)\nSumit Pasupalak\nYears Of Combined Experience\n33+\nEngineers And Researchers\n17\n[03]\n\nSkyfall AI has assembled a world class AI Research team of 25 engineers and researchers.\n\nOUR TEAMS BRING EXPERIENCE FROM",
+    "imgs": [
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/sam-pasupalak.jpg",
+        "alt": "Sam Pasupalak"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/kaheer-suleman.jpg",
+        "alt": "Kaheer Suleman"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/sumit-pasupalak.jpg",
+        "alt": "Sumit Pasupalak"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/microsoft.png",
+        "alt": "Microsoft"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/university-of-toronto.png",
+        "alt": "University of Toronto"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/mila.svg",
+        "alt": "MILA"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/vector-institute.png",
+        "alt": "Vector Institute"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/amii.png",
+        "alt": "AMII"
+      },
+      {
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/ycombinator.png",
+        "alt": "YCombinator"
+      }
+    ]
+  },
+  "matters": {
+    "html": "No More AI Co-Pilots\n\nWe are building foundation research for the software that will re-invent businesses. With world models, AI systems can ‘dream’ what a successful business requires, and then plan and execute its own actions.\n\nLong Horizon Planning / Adaptability / Reliability\n\nSkyfall AI will advance AI research and develop AI systems for the business world where long horizon planning, adaptability, and reliability really matter, especially for the industrial, manufacturing, enterprise, healthcare, sectors and beyond.\n\n[01]\nIndustrial\n[02]\nManufacturing\n[03]\nEnterprise\n[04]\nHealthcare\nAnd beyond",
+    "imgs": []
+  },
+  "buttons": [
+    {
+      "text": "",
+      "aria": "Open menu"
+    },
+    {
+      "text": "",
+      "aria": "Close"
+    },
+    {
+      "text": "Submit",
+      "aria": null
+    },
+    {
+      "text": "",
+      "aria": "Close"
+    },
+    {
+      "text": "Submit",
+      "aria": null
+    },
+    {
+      "text": "",
+      "aria": "Close"
+    }
+  ],
+  "h1": {
+    "fontSize": "136px",
+    "fontWeight": "500",
+    "letterSpacing": "-6.12px",
+    "lineHeight": "116.96px",
+    "color": "rgb(26, 26, 26)",
+    "background": "rgba(0, 0, 0, 0)",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "textTransform": "capitalize",
+    "fontFamily": "Geist, ui-sans-serif, system-ui, sans-serif"
+  },
+  "sub": {
+    "fontSize": "19px",
+    "fontWeight": "400",
+    "letterSpacing": "-0.38px",
+    "lineHeight": "23.75px",
+    "color": "rgb(71, 71, 71)",
+    "background": "rgba(0, 0, 0, 0)",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "textTransform": "none",
+    "fontFamily": "Geist, ui-sans-serif, system-ui, sans-serif"
+  },
+  "cta": {
+    "fontSize": "15px",
+    "fontWeight": "600",
+    "letterSpacing": "-0.3px",
+    "lineHeight": "22.5px",
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(26, 26, 26)",
+    "padding": "0px 20px",
+    "borderRadius": "0px",
+    "textTransform": "uppercase",
+    "fontFamily": "\"Geist Mono\", ui-monospace, SFMono-Regular, Menlo, monospace"
+  }
+}

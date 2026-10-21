@@ -1,0 +1,566 @@
+←
+ALL ARTICLES
+OCT 19, 2026
+SKYFALL RESEARCH
+12 MIN READ
+Introducing SKY-001: The First
+World Model for Engineering
+SKY-001
+WORLD MODELS
+CAD & BIM
+Pause
+
+ON THIS PAGE
+
+Introduction
+Pipeline Overview
+Hierarchical Composer
+Construction World Model
+Training Data
+Performance
+What Comes Next
+
+SHARE
+
+COPY LINK
+LINKEDIN
+X
+
+The last decade of AI has been defined by language models that can reason, write code and solve increasingly complex problems. Engineering in the physical world is still hard for them. A design that reads well in text may not be geometrically accurate, physically feasible or manufacturable: engineering means keeping spatial relationships and constraints consistent across thousands of interconnected components, and language is an inefficient medium for that kind of reasoning.
+
+We built SKY-001 to explore a fundamentally different approach: planning directly in the visual world. SKY-001 is a spatial world model that breaks a complex system into manageable parts and keeps them consistent across hundreds or thousands of construction steps. Unlike world models that generate environments to look at, explore or act in, it generates designs along with the sequences that build them. We believe world models can provide the spatial understanding and long-horizon planning that language models lack, and in turn unlock a new generation of physical agents.
+
+In this post we show SKY-001 on two tasks. In CAD, it turns an image of an engineered product into a hierarchy of assemblies and parts, with the sketches and operations that build each part. In BIM, it turns a building outline into a layout of units, and each unit into its rooms. In both, it matches or exceeds frontier models in a fraction of the time and cost.
+
+Pipeline Overview
+
+Engineers rarely design a complex system in one flat pass. An engineered product such as an engine can break down into hundreds of parts across several levels, many nested inside others and hidden from the outside, and each part has to fit its neighbours. So engineers work level by level: the overall design, then its assemblies, then the individual parts and how to build them, with each level guiding the next.
+
+SKY-001 follows the same order, in two stages. The Hierarchical Composer generates the target design and unfolds it level by level into a hierarchy of elements. The Construction World Model then predicts the visual sequence that builds each element. Together they produce a visual design plan.
+
+This structure is what makes long rollouts tractable. A flat model would have to generate every part of a design, and every step that builds it, in one long chain, where each decision depends on all the others and errors accumulate over thousands of steps. Hierarchy breaks that chain. Once a parent is fixed, the rollouts of the elements can run in parallel, the way an engineering team divides the work, and the number of sequential steps grows with the depth of the design rather than its size. Each level also hands the one below an explicit subgoal, so a decision about a single bolt stays consistent with the whole engine, even hundreds of steps later.
+
+Input
+
+A design goal with the references and constraints available.
+
+IN
+text, visual reference or spatial constraints
+Hierarchical
+Composer
+
+Generates the target and decomposes it level by level.
+
+IN
+design intent
+OUT
+design tree → leaf components
+CAD · assemblies → parts
+BIM · layout sketch → units → rooms
+Construction
+World Model
+
+Builds each leaf as an ordered sequence of visual states.
+
+IN
+leaf + parent context
+OUT
+ordered visual states
+CAD · 3D build + 2D sketches
+BIM · 2D drawing states
+Rollout
+
+The design tree and each leaf's build sequence together form the visual design plan.
+
+IN
+per-leaf state sequences
+OUT
+visual design plan
+CAD · part builds + sketches
+BIM · floor plan drawing states
+
+SKY-001 can also offer a choice. From the same intent, its first step can generate several candidate target designs, so users can compare them and pick one before it is unfolded into parts and a construction plan.
+
+Hierarchical Composer
+
+The flowchart below shows the composer's three steps, shared by CAD and BIM: it generates the whole design, splits it level by level, and refines each leaf once the splitting stops. We then follow examples in CAD and BIM through them.
+
+Hierarchical Composer
+
+what the design is made of
+
+intent
+an image, text or a brief
+01
+Generate the whole
+
+a rough idea of the design
+
+DiT
+→
+02
+Split
+
+into components or units
+
+CAD DiT · BIM rule
+↻ repeat per part, in parallel
+→
+03
+Refine each leaf
+
+once splitting stops
+
+DiT
+design tree
+leaves are the components
+The Hierarchical Composer decides what a design is made of: it generates the whole design, splits it level by level with parts on the same level in parallel, and refines each leaf once the splitting stops.
+CAD · Image to Part Tree
+
+An industrial asset is more than a single mesh with regions labeled as parts. It is a hierarchy of components, and recognizing that these components should exist is not the same as generating their geometry or planning how they fit together. In CAD, the composer starts from a single image. It first generates a rough 3D shape of the whole object, enough to decide what it is made of, then takes it apart: it splits the object into its main assemblies, splits each assembly again, and keeps going until every piece is a single part.
+
+Below, four assemblies are each taken apart this way from a single image.
+
+Jaguar E-Type Roadster
+Jet Engine
+FANUC ArcMate 100iB
+Minitractor 4×4
+01 · SPORTS CAR
+
+Jaguar E-Type Roadster
+
+Whole
+Depth 1
+Depth 2
+Depth 3
+Depth 4
+Depth 5
+Loading the VMS-85 engine…
+
+Drag to rotate · Scroll to zoom · Pick a depth to stop the cycle
+
+SKY-001’s predicted part hierarchy for the VMS-85 engine. Each colour is one node at the chosen depth. The diagram below shows the same hierarchy, one row per depth. The input image is at the lower left.
+
+On the right is a closer look at another example, a VMS-85 engine generated from a single photo: a block and cylinder heads, an intake topped by its air filter, exhaust headers and a timing drive at the front, and inside those, housings, gear stacks, shafts, hoses and sleeves. From that one image, SKY-001 builds a five-level tree of its parts.
+
+Rotor on shaft
+Finned cup
+Grooved ring
+Sleeve
+Rail with two posts
+Loading the part…
+Before: the extracted part
+missing geometry and rough surfaces
+After: the completed part
+generated by SKY-001
+
+Drag to rotate · Scroll to zoom · Both views turn together · Pick a part to stop the cycle
+
+Five parts of the VMS-85 engine, before and after completion. The parts extracted from the generated shape have missing geometry and rough surfaces. SKY-001 fills in the missing geometry and adds fine detail.
+
+The 3D shape the composer first generates from the image is only a rough idea of the design. It is good enough to decide what the parts are and where they go, but its surfaces are coarse, and everything hidden inside is missing, so splitting it gives rough, open pieces: a gear stack behind the timing cover, or a sleeve buried inside a housing, comes out as an open shell. Once the splitting stops, a refiner turns each leaf into a precise part, filling in what was hidden and adding the fine detail the rough shape never had.
+
+BIM · Building Outline to Floor Plan
+
+A building is a hierarchy too: each storey holds apartments and the shared circulation between them, and each apartment holds its rooms. In BIM, the composer starts from what an architect can write down: the envelope of the storey, with the thickness of every wall and its open edges, and a short brief with the programme, the net area and each room's size and rough position. From the brief we also generate a simple layout sketch, one box per room at the position and size the brief gives, so the model knows where rooms go, not only what they are. The composer generates the whole plan at once, down to doors, windows and fixtures, and checks it against the brief; a large storey is then split into parts that are each planned again and joined back.
+
+Below is an example, one storey of an apartment building, about 29 metres across. From one envelope and one brief, SKY-001 places its walls and circulation and divides the floor into three apartments around a shared corridor, stairs and lifts.
+
+01
+Building outline
+the input: facade and balconies
+02
+Walls and circulation
+apartment walls, corridors and stairs
+03
+Unit layout
+3 apartments, each with its area
+Construction World Model
+
+The flowchart below shows how the construction world model builds each leaf component. In CAD it first plans the 3D build, one operation at a time; for both CAD and BIM it then draws the 2D rollout, a coarse pass in a compressed space followed by a refiner. We follow one part in CAD and one storey in BIM through it.
+
+Construction World Model
+
+how each leaf component is built, one step at a time
+
+design tree
+Hierarchical Composer
+→
+leaf component
+a part or a floor plan
+CAD
+04
+3D build
+
+one operation at a time; a floor plan is already 2D
+
+→
+3D rollout
+the solid after each step
+each pair of consecutive 3D states → the sketch between them (CAD)
+CAD + BIM
+05
+World model
+
+a coarse rollout, stroke by stroke
+
+DiT
+↻ repeat until it stops
+→
+06
+Refiner
+
+each state in full detail
+
+DiT
+→
+2D rollout
+the canvas after each stroke
+The Construction World Model decides how each leaf component is built, one step at a time. In CAD it plans a 3D build, the solid after each step, and every two consecutive 3D states set the sketch that turns one into the next. In both domains it draws a 2D rollout: a world model first rolls out coarse states in a compressed space, and a refiner turns each state into a high-resolution canvas.
+CAD · Part to Sketches and Operations
+
+CAD parts are rarely created through one uninterrupted sketch. Designers move through a sequence of intermediate 3D states: a profile becomes an extrusion, new sketches add or remove material, and later operations, like a cut that makes a hole, refine the result. Each state is a subgoal, so the construction of a complex part becomes a series of smaller design problems. SKY-001 works the same way: it plans the intermediate 3D states of a part, and between each pair of consecutive states it draws the 2D sketch that turns one into the next.
+
+The films below show this on four assemblies, one part at a time: the view zooms onto the part, then its sketches and 3D states are drawn in turn. The figure after them slows the process down for one part of the VMS-85 engine from Section 3. SKY-001 extrudes the part's base outline, adds a second extrusion, then cuts three features into it; at each step you see the predicted sketch on the current state and the 3D state that results.
+
+Jaguar E-Type Roadster
+Jet Engine
+FANUC ArcMate 100iB
+Minitractor 4×4
+01 · SPORTS CAR
+
+Jaguar E-Type Roadster
+
+VMS-85 engine part
+Slowed for inspection · 5 construction steps
+Pause
+Replay
+Final states
+INPUT
+The part to reconstruct
+Loading input part…
+Drag to rotate · Scroll to zoom
+Reset view
+★ SKY-001
+Predicted 3D + 2D states
+3D states
+Loading construction…
+2D sketch rollout
+Sketches follow the 3D states
+Restart
+‹
+›
+
+Blue: sketch on Before · Green: added surfaces · Clay: removed material · Drag to rotate · ‹ / › inspect a transition
+
+The input is a part from the VMS-85 engine. The replay is slowed for inspection. Sketches are shown on Before; the animated transition reveals the predicted After state. Transitions are illustrative, and the saved sketch and 3D geometry can disagree.
+BIM · Floor Plan to Construction Sequence
+
+In BIM, an architect does not draw a floor in one stroke either. The exterior walls go down first, then the walls between apartments and the shared corridors, then each apartment is filled in room by room, with its doors, windows and fixtures. The construction world model learns this drawing order from step-by-step plan histories, recorded or reconstructed. Given the finished plan from the composer, it draws the floor one state at a time and decides for itself when the drawing is done; a whole floor rolls out in about a second. Below, we present this process for one apartment, through these states: its outline, part-way with the interior walls and first rooms, and finished with its doors, windows and fixtures.
+
+01
+Unit outline
+92 m², from the unit layout
+02
+Part-way
+interior walls and the first rooms
+03
+Finished unit
+7 rooms, with doors, windows and fixtures
+
+The same process scales to whole floors. Each film below draws one storey from its outline to the finished plan.
+
+Floor 1933
+Floor 8252
+Floor 25878
+Floor 5209
+Floor 2544
+Floor 3582
+Floor 1977
+2D Rollout · Drawing Each State
+
+In both examples above, the drawing itself happens on a 2D canvas: in CAD, the sketch between two 3D states; in BIM, each state of the floor plan. The 2D world model draws these canvases with diffusion, in two passes. It first rolls out the whole sequence roughly, in a compressed latent space, and then refines it. The figure below follows one CAD sketch through both passes.
+
+The compressed space comes from a Matryoshka-style autoencoder, which sums up each state as a sequence of codes. Training starts with a long sequence and drops codes from the end step by step while still asking for the same reconstruction, so the earliest codes have to hold the global variation between states, the overall layout, and the later ones only finer detail. The coarse rollout runs in this highly compressed space, using only the leading codes of each state, so its reconstruction error is relatively large, but it keeps the overall layout of each state. The refiner then redraws every state at full resolution, based on the coarse rollout, and brings back what the short code left out: sharp lines, exact corners and small features.
+
+01
+Target
+the outline the operation sweeps
+02
+Latent rollout
+drawn stroke by stroke in the compressed space
+03
+Refined rollout
+every state redrawn at full resolution
+Training Data
+
+Our CAD data comes from publicly available online datasets of real product assemblies. The raw files are not ready to train on: their assembly trees are inconsistent, faces overlap, geometry is duplicated, unrelated objects are mixed in, and parts carry no names.
+
+To turn these files into training data, every asset goes through an extensive cleanup that rebuilds its hierarchy to follow standard engineering design practice, from the full assembly down to individual parts. Every node of that hierarchy then becomes a training example for the composer: it learns to split a whole product into its assemblies, and each assembly into its parts, down to a fastener that is barely visible in the full assembly. The construction world model also needs to see how each part was built, not only what it looks like. Some public datasets come with the 2D sketches and the full construction history. Where that history is missing, we recover it: engineering tools and LLM-based workflows reverse-engineer construction trajectories from the finished parts and verify them before they are used for training. The whole collection pipeline is efficient by design: once its output was checked by hand at the start, it runs with almost no human in the loop, which is what lets it scale. In all, the composer learns from more than 200,000 parts, and the construction world model from over 600,000 construction examples.
+
+The resulting data is of very high quality, well beyond the state-of-the-art datasets available today, such as PartVerse, which is widely used for part decomposition. Counted in parts per object, PartVerse has a median of 6 and a 99th percentile of 33; our data has a median of 288 and a 99th percentile of 4,180. In the examples below, a BMX bicycle from PartVerse has 8 parts and a fat bike from ours has 988.
+
+Explode
+
+Parts per object
+Same scale: 0–1,000
+
+Bicycle
+SKY-001 · Fat Bike MTB
+PartVerse · BMX bicycle
+SKY-001
+988
+PartVerse
+8
+Motorcycle
+SKY-001 · Ducati 900SS Cafe Racer
+PartVerse · Harley motorcycle
+SKY-001
+751
+PartVerse
+34
+Robot
+SKY-001 · Quadruped Robot
+PartVerse · Mech robot
+SKY-001
+542
+PartVerse
+85
+
+Drag to rotate · Scroll to zoom · Explode pulls every asset apart
+
+Across the bicycle, motorcycle and robot examples shown, PartVerse assets contain 8–85 coarse semantic parts, while our assets contain 542–988 fine-grained mesh components, including small hardware and internal parts. Colours distinguish individual parts. Explode pulls every asset apart; the SKY-001 assets open along their assembly hierarchy, from the main assemblies down to individual components.
+
+For BIM, the floor plans come from publicly available datasets of apartment plans and building models, and here too the raw data is not ready to train on: plans sit rotated in their frames, the same kind of room goes by many names, and many building models define no rooms at all. Every plan is straightened to its main wall axis, its rooms are mapped onto one shared set of room types, and it is redrawn as a labelled plan of rooms, walls, doors, windows and fixtures, paired with a brief written from the plan itself. Some sources record how each plan was drawn, step by step, and that history becomes the construction world model's training sequence. For the other plans, we reconstruct a drawing order. Synthetic plans, generated inside real building footprints, widen the set further. In all, the BIM models learn from about 35,000 real and synthetic floor plans, some two million drawing states.
+
+Performance
+
+We compare SKY-001 with frontier models on quality, time and cost, first in CAD and then in BIM. In both, SKY-001 is far faster and cheaper, while its quality matches the state of the art.
+
+CAD
+Construction World Model
+
+The CAD construction benchmark has 1,000 components sampled from complex objects such as a Jaguar E-Type Roadster, a FANUC ArcMate 100iB robotic arm, a Minitractor 4×4, a Bell 222 helicopter and a jet engine. Building one takes about 100 drawing steps across its sketches and 3D states, and the final 3D object is scored by IoU against the reference. We compare the construction world model with five frontier models on this benchmark, measuring time and cost per case and IoU against the reference shape.
+
+Time
+
+CAD construction time and cost
+Generation time · lower is faster
+0
+500s
+1000s
+1500s
+3.9s
+★ SKY-001
+199s
+GPT-6 Astra
+253s
+Gemini 4
+764s
+Qwen 3.8 Max
+439s
+Kimi K3
+1250s
+Grok 4.7
+Per case. Grok 4.7 completed none.
+
+Cost
+
+CAD construction cost
+Cost · lower is cheaper
+0
+$0.25
+$0.50
+$0.75
+$1.00
+$0.005
+★ SKY-001
+$0.75
+GPT-6 Astra
+$0.25
+Gemini 4
+$0.30
+Qwen 3.8 Max
+$0.13
+Kimi K3
+$0.59
+Grok 4.7
+Per case.
+
+IoU
+
+CAD construction quality
+IoU · higher is better
+0
+25%
+50%
+75%
+100%
+79.7%
+★ SKY-001
+79.1%
+GPT-6 Astra
+76.9%
+Gemini 4
+34.4%
+Qwen 3.8 Max
+9.5%
+Kimi K3
+no output
+Grok 4.7
+Mean IoU against the reference.
+
+In comparison to the state-of-the-art model GPT-6 Astra, SKY-001 achieves about a 50× speedup and costs about 150 times less per case, while matching its performance (79.7% IoU against 79.1%).
+
+Two choices make this possible. The hierarchy turns one long construction program into short steps: SKY-001 plans the intermediate 3D states first, then the sketch between each pair. Latent compression keeps those steps light: the overall plan needs no fine detail, so it runs on compact latents, and a refiner adds the detail back afterwards.
+
+Hierarchical Composer
+
+We tested the composer on complex assemblies such as cars, motorcycles and engines, each generated from a single image. The video on the left shows the same parts from the same image, as made by SKY-001 and by three frontier models, GPT-6 Astra, Claude Opus 5.5 and Claude Fable 5.1, each writing a Blender script for the whole assembly in one request. As the video shows, GPT-6 Astra is far ahead of the other frontier models, and it is widely recognised as the state of the art for this task. On the right, we compare SKY-001 with it directly: two LLM judges, GPT-6.1 Sol and Claude Opus 5.5, scored both results from the same renders, without knowing which method made which.
+
+Same image, four models
+
+The same parts from the same input image, by SKY-001, GPT-6 Astra, Claude Opus 5.5 and Claude Fable 5.1.
+
+Judge scores
+
+Hierarchical Composer judge scores
+★ SKY-001
+GPT-6 Astra
+Mean judge score (1–10) · higher is better
+0
+2
+4
+6
+8
+10
+7.8
+6.4
+Part decomposition
+7.3
+6.3
+Interior
+8.0
+7.3
+Complexity
+8.1
+6.7
+Match to the input image
+7.7
+7.4
+Exterior realism
+Two blind LLM judges. GPT-6 Astra returned a model for 82% of assets.
+BIM
+Construction World Model
+
+The BIM construction benchmark has 1,000 floor plans: about 350 whole floors at building level, from IFC building models, and 650 at apartment level. Each takes from about 20 to more than 200 drawing steps, around 70 on average, and the final floor plan is scored by IoU. On this benchmark, the construction world model builds each case in about a second, at a fraction of a cent. Compared with GPT-6 Astra, widely regarded as the strongest model for design, that is about 120 times faster and about 185 times cheaper per case. It also leads on IoU, 43.6% against 40.6% for GPT-6 Astra.
+
+Time
+
+BIM construction time and cost
+Generation time · lower is faster
+0
+200s
+400s
+600s
+800s
+1.22s
+★ SKY-001
+144.6s
+GPT-6 Astra
+346.2s
+Gemini 3.8 Flash
+255.3s
+Qwen 3.8 Max
+113.9s
+Kimi K3
+592.1s
+Grok 4.7
+Per case.
+
+Cost
+
+BIM construction cost
+Cost · lower is cheaper
+0
+$0.20
+$0.40
+$0.60
+$0.0024
+★ SKY-001
+$0.446
+GPT-6 Astra
+$0.218
+Gemini 3.8 Flash
+$0.111
+Qwen 3.8 Max
+$0.270
+Kimi K3
+$0.305
+Grok 4.7
+Per case.
+
+IoU
+
+BIM construction quality
+IoU · higher is better
+0
+25%
+50%
+75%
+100%
+43.6%
+★ SKY-001
+40.6%
+GPT-6 Astra
+42.3%
+Gemini 3.8 Flash
+28.8%
+Qwen 3.8 Max
+33.7%
+Kimi K3
+28.2%
+Grok 4.7
+Mean IoU against the reference.
+What Comes Next
+
+We presented our framework in two domains, CAD and BIM, and our next steps start there. In CAD, sketch rollouts would become executable operations with an editable feature history, and text instructions could guide the design directly: a designer could ask to widen a bracket or move a shaft, and SKY-001 would update the neighboring parts that must change with it. In BIM, generated floor plans and their drawing sequences would become walls, doors, windows and rooms in a building model that architects can keep editing. Beyond CAD and BIM, the same approach, turning a high-level goal into a structured plan and carrying it through, extends to PCB design and other hardware, as a step toward Skyfall's longer-term vision of autonomous businesses.
+
+OLDER →
+How will Enterprise World Models lead to Eudaimonia and Global Prosperity?
+Keep reading
+ALL ARTICLES
+→
+17 MIN READ
+SKYFALL VISION
+How will Enterprise World Models lead to Eudaimonia and Global Prosperity?
+
+In their 2014 book The Second Machine Age, academics Erik Brynjolfsson and Andrew McAfee identify the productivity explosion of the nineteenth and twentieth centuries as the First Machine Age. Whereas technological innovations before the Industrial MRevolution were primarily augmentations of an individual’s capacity, the Industrial Revolution created tools that far exceeded their maker. From the synergy of the productive ensemble came such material abundance that a person living after was to a person living before almost as if an entirely new species.
+
+WORLD MODELS
+ENTERPRISE
+VISION
+OCT 05, 2026
+READ →
+14 MIN READ
+SKYFALL RESEARCH
+Why Large Language Models Are Not Continual Learners
+
+Enterprise AI is moving from static tools to autonomous agents, where systems are asked to make sequential decisions across supply chains, warehouse operations, and production planning, not just once, but continuously, across environments that shift over time. This raises a question that benchmark leaderboards do not answer: can an AI agent that performs well today continue to perform well as conditions change? Can it detect when its operating environment has drifted, adapt its behaviour in response, and do so reliably across many such shifts? These are the defining challenges of continual learning, and they are poorly represented in existing evaluation frameworks.
+
+MORPHEUS
+CONTINUAL LEARNING
+LLMS
+JUL 10, 2026
+READ →
+21 MIN READ
+SKYFALL RESEARCH
+Introducing OpenRCT2: Why can Claude & GPT ace ARC-AGI but fail running a business?
+
+Human life has long been dominated by work and commerce – the means by which we meet our physical needs. Even children’s toys reflect this, be it a toy stethoscope or a video game like Roller Coaster Tycoon. Given this focus, it is unsurprising that our earliest conceptions of artificially intelligent creatures also revolve around these themes. From the hardworking golem of Jewish folklore to the introduction of the word “robot” in the play R.U.R. (derived from the Czech word for “serf”), these intelligent machines were portrayed as economic engines, albeit unreliable ones. Consequently, it is only natural that there is a deep interest in applying modern machine learning methods to previously impossible tasks, namely business management itself. However, this has proven to be extremely challenging. Over the past year, Anthropic has tested Claude’s ability to operate a vending machine; this culminated in December of last year when they deployed their system to the Wall Street Journal’s newsroom. It was bankrupt within a week. Among other issues, it bought a live pet fish, repeatedly set prices to zero, and briefly believed it was a Soviet vending machine in the basement of Moscow U.
+
+OPENRCT2
+BENCHMARKS
+LLMS
+MAR 30, 2026
+READ →

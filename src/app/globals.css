@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-brand: #3e57da;
+  --color-brand-lift: #6f83f0;
+  --color-paper: #fff;
+  --color-studio: #f6f6f6;
+  --color-ink: #1a1a1a;
+  --color-body: #474747;
+  --color-muted: #7a7a7a;
+  --color-faint: #adadad;
+  --color-slash: #ccc;
+  --color-line: #e0e0e0;
+  --color-dot: #d4d4d4;
+  --color-tint: #eef1fd;
+  --color-ghost: #b9c3f2;
+  --color-bar: #c4c4c4;
+  --color-grid: #3e57da1a;
+  --color-grid-on-dark: #ffffff1a;
+  --color-night: #1a1a1a;
+  --color-night-mid: #474747;
+  --color-night-text: #a3a3a3;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility dots {
+  background-color: var(--color-studio);
+  background-image: radial-gradient(var(--color-dot) 1px, transparent 1.3px);
+  background-size: 12px 12px;
+}
+
+@utility dots-grey {
+  background-color: #fafafa;
+  background-image: radial-gradient(#d4d4d4 1px, #0000 1.3px);
+  background-size: 6px 6px;
+}
+
+@utility grid-dark {
+  background-color: var(--color-night);
+  background-image:
+    linear-gradient(var(--color-grid-on-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-on-dark) 1px, transparent 1px);
+  background-position: -1px -1px;
+  background-size: 44px 44px;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 72px;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.split-line {
+  margin-bottom: -0.08em;
+  padding-bottom: 0.08em;
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  :before,
+  :after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Server-rendered markup stays hidden until GSAP takes over the element; the root layout's <noscript> style undoes this. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-split-reveal],
+  [data-fade-up="self"],
+  [data-fade-up="stagger"] > :not([data-split-reveal]) {
+    visibility: hidden;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+[data-scramble] {
+  pointer-events: none;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow {
+    animation: 1.8s linear infinite flow;
+  }
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24px;
+  }
+}
+
+@keyframes tilt-ring {
+  0% {
+    transform: translateZ(var(--ring-r)) rotateY(0deg);
+  }
+  to {
+    transform: translateZ(var(--ring-r)) rotateY(var(--ring-turn));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .explorer-pop[open] {
+    animation: 0.42s cubic-bezier(0.22, 1, 0.36, 1) sheet-up;
+  }
+  .explorer-pop[open]::backdrop {
+    animation: 0.3s ease-out fade-in;
+  }
+  @media (min-width: 640px) {
+    .explorer-pop[open] {
+      animation: 0.32s cubic-bezier(0.22, 1, 0.36, 1) pop-in;
+    }
+  }
+}
+
+@keyframes sheet-up {
+  0% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+}
+
+.blog-prose {
+  color: var(--color-body);
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .blog-prose {
+    font-size: 18px;
+  }
+}
+
+.blog-prose > :first-child {
+  margin-top: 0;
+}
+
+.blog-prose p,
+.blog-prose ul,
+.blog-prose ol,
+.blog-prose blockquote {
+  margin: 0 0 1.1em;
+}
+
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  color: var(--color-ink);
+  letter-spacing: -0.05em;
+  scroll-margin-top: 120px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.blog-prose h2 {
+  margin: 2.4em 0 0.6em;
+  font-size: 30px;
+}
+
+.blog-prose h3 {
+  border-top: 1px solid var(--color-line);
+  margin: 2.4em 0 0.7em;
+  padding-top: 1.1em;
+  font-size: 24px;
+}
+
+.blog-prose h4 {
+  margin: 1.8em 0 0.5em;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .blog-prose h2 {
+    font-size: 34px;
+  }
+  .blog-prose h3 {
+    font-size: 28px;
+  }
+}
+
+.blog-prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.blog-prose a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-ghost);
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.blog-prose a:hover {
+  color: var(--color-brand);
+  text-decoration-color: currentColor;
+}
+
+.blog-prose a u {
+  text-decoration: none;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  padding: 0;
+  list-style: none;
+}
+
+.blog-prose ol {
+  counter-reset: item;
+}
+
+.blog-prose li {
+  margin-bottom: 0.5em;
+  padding-left: 1.6em;
+  position: relative;
+}
+
+.blog-prose ul > li:before {
+  content: "";
+  background: var(--color-brand);
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 0.68em;
+  left: 0.3em;
+}
+
+.blog-prose ol > li {
+  counter-increment: item;
+}
+
+.blog-prose ol > li:before {
+  content: counter(item, decimal-leading-zero);
+  font-family: var(--font-mono);
+  color: var(--color-brand);
+  font-size: 12px;
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+}
+
+.blog-prose blockquote {
+  border-left: 2px solid var(--color-brand);
+  color: var(--color-ink);
+  padding: 0.2em 0 0.2em 1.1em;
+  font-style: italic;
+}
+
+.blog-prose img,
+.blog-prose video {
+  border: 1px solid var(--color-line);
+  background: var(--color-studio);
+  width: 100%;
+  height: auto;
+  margin: 1.8em 0;
+  display: block;
+}
+
+.blog-prose :is(img, video) + :is(img, video) {
+  margin-top: -0.8em;
+}

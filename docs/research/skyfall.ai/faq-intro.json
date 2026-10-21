@@ -1,0 +1,181 @@
+{
+  "faqs": [
+    "What is SKY-001?",
+    "Is SKY-001 just another Language-based model?",
+    "Why are World Models better for physical object design?",
+    "How do I get access to SKY-001?",
+    "What is SKY-001 good at?",
+    "What else can we design with SKY-001?",
+    "I have further questions. How to contact the team?"
+  ],
+  "intro": {
+    "text": "←\nALL ARTICLES\nOCT 19, 2026\nSKYFALL RESEARCH\n12 MIN READ\nIntroducing SKY-001: The First World Model for Engineering\nSKY-001\nWORLD MODELS\nCAD & BIM\nPause\n\nON THIS PAGE\n\nIntroduction\nPipeline Overview\nHierarchical Composer\nConstruction World Model\nTraining Data\nPerformance\nWhat Comes Next\n\nSHARE\n\nCOPY LINK\nLINKEDIN\nX\n\nThe last decade of AI has been defined by language models that can reason, write code and solve increasingly complex problems. Engineering in the physical world is still hard for them. A design that reads well in text may not be geometrically accurate, physically feasible or manufacturable: engineering means keeping spatial relationships and constraints consistent across thousands of interconnected components, and language is an inefficient medium for that kind of reasoning.\n\nWe built SKY-001 to explore a fundamentally different approach: planning directly in the visual world. SKY-001 is a spatial world model that breaks a complex system into manageable parts and keeps them consistent across hundreds or thousands of construction steps. Unlike world models that generate environments to look at, explore or act in, it generates designs along with the sequences that build them. We believe world models can provide the spatial understanding and long-horizon planning that language models lack, and in turn unlock a new generation of physical agents.\n\nIn this post we show SKY-001 on two tasks. In CAD, it turns an image of an engineered product into a hierarchy of assemblies and parts, with the sketches and operations that build each part. In BIM, it turns a building outline into a layout of units, and each unit into its rooms. In both, it matches or exceeds frontier models in a fraction of the time and cost.\n\nPipeline Overview\n\nEngineers rarely design a complex system in one flat pass. An engineered product such as an engine can break down into hundreds of parts across several levels, many nested inside others and hidden from the outside, and each part has to fit its neighbours. So engineers work level by level: the overall design, then its assemblies, then the individual parts and how to build them, with each level guiding the next.\n\nSKY-001 follows the same order, in two stages. The Hierarchical Composer generates the target design and unfolds it level by level into a hierarchy of elements. The Construction World Model then predicts the visual sequence that builds each element. Together they produce a visual design plan.\n\nThis structure is what makes long rollouts tractable. A flat model would have to generate every part of a design, and every step that builds it, in one long chain, where each decision depends on all the others and errors accumulate over thousands of steps. Hierarchy breaks that chain. Once a parent is fixed, the rollouts of the elements can run in parallel, the way an engineering team divides the work, and the number of sequential steps grows with the depth of the design rather than its size. Each level also hands the one below an explicit subgoal, so a decision about a single bolt stays consistent with the whole engine, even hundreds of steps later.\n\nInput\n\nA design goal with the references and constraints available.\n\nIN\ntext, visual reference or spatial constraints\nHierarchical\nComposer\n\nGenerates the target and decomposes it level by level.\n\nIN\ndesign intent\nOUT\ndesign tree → leaf components\nCAD · assemblies → parts\nBIM · layout sketch → units → rooms\nConstruction\nWorld Model\n\nBuilds each leaf as an ordered sequence of visual states.\n\nIN\nleaf + parent context\nOUT\nordered visual states\nCAD · 3D build + 2D sketches\nBIM · 2D drawing states\nRollout\n\nThe design tree and each leaf's build sequence together form the visual design plan.\n\nIN\nper-leaf state sequences\nOUT\nvisual design plan\nCAD · part builds + sketches\nBIM · floor plan drawing states\n\nSKY-001 can also offer a choice. From the same intent, its first step can generate several candidate target designs, so users can compare them and pick one before it is unfolded into parts and a construction plan.\n\nHierarchical Composer\n\nThe flowchart below shows the composer's three steps, shared by CAD and BIM: it generates the whole design, splits it level by level, and refines each leaf once the splitting stops. We then follow examples in CAD and BIM through them.\n\nHierarchical Composer\n\nwhat the design is made of\n\nintent\nan image, text or a brief\n01\nGenerate the whole\n\na rough idea of the design\n\nDiT\n→\n02\nSplit\n\ninto components or units\n\nCAD DiT · BIM rule\n↻ repeat per part, in parallel\n→\n03\nRefine each leaf\n\nonce splitting stops\n\nDiT\ndesign tree\nleaves are the components\nThe Hierarchical Composer decides what a design is made of: it generates the whole design, splits it level by level with parts on the same level in parallel, and refines each leaf once the splitting stops.\nCAD · Image to Part Tree\n\nAn industrial asset is more than a single mesh with regions labeled as parts. It is a hierarchy of components, and recognizing that these components should exist is not the same as generating their geometry or planning how they fit together. In CAD, the composer starts from a single image. It first generates a rough 3D shape of the whole object, enough to decide what it is made of, then takes it apart: it splits the object into its main assemblies, splits each assembly again, and keeps going until every piece is a single part.\n\nBelow, four assemblies are each taken apart this way from a single image.\n\nJaguar E-Type Roadster\nJet Engine\nFANUC ArcMate 100iB\nMinitractor 4×4\n01 · SPORTS CAR\n\nJaguar E-Type Roadster\n\nWhole\nDepth 1\nDepth 2\nDepth 3\nDepth 4\nDepth 5\nLoading the VMS-85 engine…\n\nDrag to rotate · Scroll to zoom · Pick a depth to stop the cycle\n\nSKY-001’s predicted part hierarchy for the VMS-85 engine. Each colour is one node at the chosen depth. The diagram below shows the same hierarchy, one row per depth. The input image is at the lower left.\n\nOn the right is a closer look at another example, a VMS-85 engine generated from a single photo: a block and cylinder heads, an intake topped by its air filter, exhaust headers and a timing drive at the front, and inside those, housings, gear stacks, shafts, hoses and sleeves. From that one image, SKY-001 builds a five-level tree of its parts.\n\nRotor on shaft\nFinned cup\nGrooved ring\nSleeve\nRail with two posts\nLoading the part…\nBefore: the extracted part\nmissing geometry and rough surfaces\nAfter: the completed part\ngenerated by SKY-001\n\nDrag to rotate · Scroll to zoom · Both views turn together · Pick a part to stop the cycle\n\nFive parts of the VMS-85 engine, before and after completion. The parts extracted from the generated shape have missing geometry and rough surfaces. SKY-001 fills in the missing geometry and adds fine detail.\n\nThe 3D shape the composer first generates from the image is only a rough idea of the design. It is good enough to decide what the parts are and where they go, but its surfaces are coarse, and everything hidden inside is missing, so splitting it gives rough, open pieces: a gear stack behind the timing cover, or a sleeve buried inside a housing, comes out as an open shell. Once the splitting stops, a refiner turns each leaf into a precise part, filling in what was hidden and adding the fine detail the rough shape never had.\n\nBIM · Building Outline to Floor Plan\n\nA building is a hierarchy too: each storey holds apartments and the shared circulation between them, and each apartment holds its rooms. In BIM, the composer starts from what an architect can write down: the envelope of the storey, with the thickness of every wall and its open edges, and a short brief with the programme, the net area and each room's size and rough position. From the brief we also generate a simple layout sketch, one box per room at the position and size the brief gives, so the model knows where rooms go, not only what they are. The composer generates the whole plan at once, down to doors, windows and fixtures, and checks it against the brief; a large storey is then split into parts that are each planned again and joined back.\n\nBelow is an example, one storey of an apartment building, about 29 metres across. From one envelope and one brief, SKY-001 places its walls and circulation and divides the floor into three apartments around a shared corridor, stairs and lifts.\n\n01\nBuilding outline\nthe input: facade and balconies\n02\nWalls and circulation\napartment walls, corridors and stairs\n03\nUnit layout\n3 apartments, each with its area\nConstruction World Model\n\nThe flowchart below shows how the construction world model builds each leaf component. In CAD it first plans the 3D build, one operation at a time; for both CAD and BIM it then draws the 2D rollout, a coarse pass in a compressed space followed by a refiner. We follow one part in CAD and one storey in BIM through it.\n\nConstruction World Model\n\nhow each leaf component is built, one step at a time\n\ndesign tree\nHierarchical Composer\n→\nleaf component\na part or a floor plan\nCAD\n04\n3D build\n\none operation at a time; a floor plan is already 2D\n\n→\n3D rollout\nthe solid after each step\neach pair of consecutive 3D states → the sketch between them (CAD)\nCAD + BIM\n05\nWorld model\n\na coarse rollout, stroke by stroke\n\nDiT\n↻ repeat until it stops\n→\n06\nRefiner\n\neach state in full detail\n\nDiT\n→\n2D rollout\nthe canvas after each stroke\nThe Construction World Model decides how each leaf component is built, one step at a time. In CAD it plans a 3D build, the solid after each step, and every two consecutive 3D states set the sketch that turns one into the next. In both domains it draws a 2D rollout: a world model first rolls out coarse states in a compressed space, and a refiner turns each state into a high-resolution canvas.\nCAD · Part to Sketches and Operations\n\nCAD parts are rarely created through one uninterrupted sketch. Designers move through a sequence of intermediate 3D states: a profile becomes an extrusion, new sketches add or remove material, and later operations, like a cut that makes a hole, refine the result. Each state is a subgoal, so the construction of a complex part becomes a series of smaller design problems. SKY-001 works the same way: it plans the intermediate 3D states of a part, and between each pair of consecutive states it draws the 2D sketch that turns one into the next.\n\nThe films below show this on four assemblies, one part at a time: the view zooms onto the part, then its sketches and 3D states are drawn in turn. The figure after them slows the process down for one part of the VMS-85 engine from Section 3. SKY-001 extrudes the part's base outline, adds a second extrusion, then cuts three features into it; at each step you see the predicted sketch on the current state and the 3D state that results.\n\nJaguar E-Type Roadster\nJet Engine\nFANUC ArcMate 100iB\nMinitractor 4×4\n01 · SPORTS CAR\n\nJaguar E-Type Roadster\n\nVMS-85 engine part\nSlowed for inspection · 5 construction steps\nPause\nReplay\nFinal states\nINPUT\nThe part to reconstruct\nLoading input part…\nDrag to rotate · Scroll to zoom\nReset view\n★ SKY-001\nPredicted 3D + 2D states\n3D states\nLoading construction…\n2D sketch rollout\nSketches follow the 3D states\nRestart\n‹\n›\n\nBlue: sketch on Before · Green: added surfaces · Clay: removed material · Drag to rotate · ‹ / › inspect a transition\n\nThe input is a part from the VMS-85 engine. The replay is slowed for inspection. Sketches are shown on Before; the animated transition reveals the predicted After state. Transitions are illustrative, and the saved sketch and 3D geometry can disagree.\nBIM · Floor Plan to Construction Sequence\n\nIn BIM, an architect does not draw a floor in one stroke either. The exterior walls go down first, then the walls between apartments and the shared corridors, then each apartment is filled in room by room, with its doors, windows and fixtures. The construction world model learns this drawing order from step-by-step plan histories, recorded or reconstructed. Given the finished plan from the composer, it draws the floor one state at a time and decides for itself when the drawing is done; a whole floor rolls out in about a second. Below, we present this process for one apartment, through these states: its outline, part-way with the interior walls and first rooms, and finished with its doors, windows and fixtures.\n\n01\nUnit outline\n92 m², from the unit layout\n02\nPart-way\ninterior walls and the first rooms\n03\nFinished unit\n7 rooms, with doors, windows and fixtures\n\nThe same process scales to whole floors. Each film below draws one storey from its outline to the finished plan.\n\nFloor 1933\nFloor 8252\nFloor 25878\nFloor 5209\nFloor 2544\nFloor 3582\nFloor 1977\n2D Rollout · Drawing Each State\n\nIn both examples above, the drawing itself happens on a 2D canvas: in CAD, the sketch between two 3D states; in BIM, each state of the floor plan. The 2D world model draws these canvases with diffusion, in two passes. It first rolls out the whole sequence roughly, in a compressed latent space, and then refines it. The figure below follows one CAD sketch through both passes.\n\nThe compressed space comes from a Matryoshka-style autoencoder, which sums up each state as a sequence of codes. Training starts with a long sequence and drops codes from the end step by step while still asking for the same reconstruction, so the earliest codes have to hold the global variation between states, the overall layout, and the later ones only finer detail. The coarse rollout runs in this highly compressed space, using only the leading codes of each state, so its reconstruction error is relatively large, but it keeps the overall layout of each state. The refiner then redraws every state at full resolution, based on the coarse rollout, and brings back what the short code left out: sharp lines, exact corners and small features.\n\n01\nTarget\nthe outline the operation sweeps\n02\nLatent rollout\ndrawn stroke by stroke in the compressed space\n03\nRefined rollout\nevery state redrawn at full resolution\nTraining Data\n\nOur CAD data comes from publicly available online datasets of real product assemblies. The raw files are not ready to train on: their assembly trees are inconsistent, faces overlap, geometry is duplicated, unrelated objects are mixed in, and parts carry no names.\n\nTo turn these files into training data, every asset goes through an extensive cleanup that rebuilds its hierarchy to follow standard engineering design practice, from the full assembly down to individual parts. Every node of that hierarchy then becomes a training example for the composer: it learns to split a whole product into its assemblies, and each assembly into its parts, down to a fastener that is barely visible in the full assembly. The construction world model also needs to see how each part was built, not only what it looks like. Some public datasets come with the 2D sketches and the full construction history. Where that history is missing, we recover it: engineering tools and LLM-based workflows reverse-engineer construction trajectories from the finished parts and verify them before they are used for training. The whole collection pipeline is efficient by design: once its output was checked by hand at the start, it runs with almost no human in the loop, which is what lets it scale. In all, the composer learns from more than 200,000 parts, and the construction world model from over 600,000 construction examples.\n\nThe resulting data is of very high quality, well beyond the state-of-the-art datasets available today, such as PartVerse, which is widely used for part decomposition. Counted in parts per object, PartVerse has a median of 6 and a 99th percentile of 33; our data has a median of 288 and a 99th percentile of 4,180. In the examples below, a BMX bicycle from PartVerse has 8 parts and a fat bike from ours has 988.\n\nExplode\n\nParts per object\nSame scale: 0–1,000\n\nBicycle\nSKY-001 · Fat Bike MTB\nPartVerse · BMX bicycle\nSKY-001\n988\nPartVerse\n8\nMotorcycle\nSKY-001 · Ducati 900SS Cafe Racer\nPartVerse · Harley motorcycle\nSKY-001\n751\nPartVerse\n34\nRobot\nSKY-001 · Quadruped Robot\nPartVerse · Mech robot\nSKY-001\n542\nPartVerse\n85\n\nDrag to rotate · Scroll to zoom · Explode pulls every asset apart\n\nAcross the bicycle, motorcycle and robot examples shown, PartVerse assets contain 8–85 coarse semantic parts, while our assets contain 542–988 fine-grained mesh components, including small hardware and internal parts. Colours distinguish individual parts. Explode pulls every asset apart; the SKY-001 assets open along their assembly hierarchy, from the main assemblies down to individual components.\n\nFor BIM, the floor plans come from publicly available datasets of apartment plans and building models, and here too the raw data is not ready to train on: plans sit rotated in their frames, the same kind of room goes by many names, and many building models define no rooms at all. Every plan is straightened to its main wall axis, its rooms are mapped onto one shared set of room types, and it is redrawn as a labelled plan of rooms, walls, doors, windows and fixtures, paired with a brief written from the plan itself. Some sources record how each plan was drawn, step by step, and that history becomes the construction world model's training sequence. For the other plans, we reconstruct a drawing order. Synthetic plans, generated inside real building footprints, widen the set further. In all, the BIM models learn from about 35,000 real and synthetic floor plans, some two million drawing states.\n\nPerformance\n\nWe compare SKY-001 with frontier models on quality, time and cost, first in CAD and then in BIM. In both, SKY-001 is far faster and cheaper, while its quality matches the state of the art.\n\nCAD\nConstruction World Model\n\nThe CAD construction benchmark has 1,000 components sampled from complex objects such as a Jaguar E-Type Roadster, a FANUC ArcMate 100iB robotic arm, a Minitractor 4×4, a Bell 222 helicopter and a jet engine. Building one takes about 100 drawing steps across its sketches and 3D states, and the final 3D object is scored by IoU against the reference. We compare the construction world model with five frontier models on this benchmark, measuring time and cost per case and IoU against the reference shape.\n\nTime\n\nCAD construction time and cost\nGeneration time · lower is faster\n0\n500s\n1000s\n1500s\n3.9s\n★ SKY-001\n199s\nGPT-6 Astra\n253s\nGemini 4\n764s\nQwen 3.8 Max\n439s\nKimi K3\n1250s\nGrok 4.7\nPer case. Grok 4.7 completed none.\n\nCost\n\nCAD construction cost\nCost · lower is cheaper\n0\n$0.25\n$0.50\n$0.75\n$1.00\n$0.005\n★ SKY-001\n$0.75\nGPT-6 Astra\n$0.25\nGemini 4\n$0.30\nQwen 3.8 Max\n$0.13\nKimi K3\n$0.59\nGrok 4.7\nPer case.\n\nIoU\n\nCAD construction quality\nIoU · higher is better\n0\n25%\n50%\n75%\n100%\n79.7%\n★ SKY-001\n79.1%\nGPT-6 Astra\n76.9%\nGemini 4\n34.4%\nQwen 3.8 Max\n9.5%\nKimi K3\nno output\nGrok 4.7\nMean IoU against the reference.\n\nIn comparison to the state-of-the-art model GPT-6 Astra, SKY-001 achieves about a 50× speedup and costs about 150 times less per case, while matching its performance (79.7% IoU against 79.1%).\n\nTwo choices make this possible. The hierarchy turns one long construction program into short steps: SKY-001 plans the intermediate 3D states first, then the sketch between each pair. Latent compression keeps those steps light: the overall plan needs no fine detail, so it runs on compact latents, and a refiner adds the detail back afterwards.\n\nHierarchical Composer\n\nWe tested the composer on complex assemblies such as cars, motorcycles and engines, each generated from a single image. The video on the left shows the same parts from the same image, as made by SKY-001 and by three frontier models, GPT-6 Astra, Claude Opus 5.5 and Claude Fable 5.1, each writing a Blender script for the whole assembly in one request. As the video shows, GPT-6 Astra is far ahead of the other frontier models, and it is widely recognised as the state of the art for this task. On the right, we compare SKY-001 with it directly: two LLM judges, GPT-6.1 Sol and Claude Opu",
+    "imgs": [
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/jet_f087.webp",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/arcmate_f087.webp",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/tractor_f087.webp",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/jaguar_f087.webp",
+        "poster": ""
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jaguar_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jet_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/arcmate_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/tractor_poster.webp"
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/input.webp",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-1-outline.svg",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-2-walls.svg",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-3-layout.svg",
+        "poster": ""
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jaguar_sketch_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jet_sketch_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/arcmate_sketch_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/tractor_sketch_poster.webp"
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-1-unit.svg",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-2-partway.svg",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-3-finished.svg",
+        "poster": ""
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1933_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-8252_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-25878_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-5209_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-2544_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-3582_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1977_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target.mp4",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent.mp4",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined.mp4",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined_poster.webp"
+      },
+      {
+        "tag": "VIDEO",
+        "src": "",
+        "poster": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/composer-compare/part-detail_poster.webp"
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/thumb.png",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/thumb.jpg",
+        "poster": ""
+      },
+      {
+        "tag": "IMG",
+        "src": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/thumb.png",
+        "poster": ""
+      }
+    ]
+  }
+}

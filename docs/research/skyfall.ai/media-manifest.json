@@ -1,0 +1,1667 @@
+[
+  {
+    "path": "public/assets/logos/amii.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/amii.png",
+    "status": "skipped",
+    "bytes": 11997
+  },
+  {
+    "path": "public/assets/logos/investors/fidelity.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/investors/fidelity.png",
+    "status": "skipped",
+    "bytes": 70801
+  },
+  {
+    "path": "public/assets/logos/investors/inovia-capital.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/investors/inovia-capital.png",
+    "status": "skipped",
+    "bytes": 31989
+  },
+  {
+    "path": "public/assets/logos/investors/m13.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/investors/m13.png",
+    "status": "skipped",
+    "bytes": 18518
+  },
+  {
+    "path": "public/assets/logos/investors/touring-capital.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/investors/touring-capital.png",
+    "status": "skipped",
+    "bytes": 37275
+  },
+  {
+    "path": "public/assets/logos/microsoft.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/microsoft.png",
+    "status": "skipped",
+    "bytes": 29227
+  },
+  {
+    "path": "public/assets/logos/mila.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/mila.svg",
+    "status": "skipped",
+    "bytes": 11153
+  },
+  {
+    "path": "public/assets/logos/university-of-toronto.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/university-of-toronto.png",
+    "status": "skipped",
+    "bytes": 29916
+  },
+  {
+    "path": "public/assets/logos/vector-institute.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/vector-institute.png",
+    "status": "skipped",
+    "bytes": 14230
+  },
+  {
+    "path": "public/assets/logos/ycombinator.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/logos/ycombinator.png",
+    "status": "skipped",
+    "bytes": 17333
+  },
+  {
+    "path": "public/assets/media/bim-accuracy.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/bim-accuracy.mp4",
+    "status": "skipped",
+    "bytes": 1565380
+  },
+  {
+    "path": "public/assets/media/bim-speed.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/bim-speed.mp4",
+    "status": "skipped",
+    "bytes": 471228
+  },
+  {
+    "path": "public/assets/media/cad-accuracy.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/cad-accuracy.mp4",
+    "status": "skipped",
+    "bytes": 4043567
+  },
+  {
+    "path": "public/assets/media/cad-speed.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/cad-speed.mp4",
+    "status": "skipped",
+    "bytes": 2742119
+  },
+  {
+    "path": "public/assets/media/launch-video.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/launch-video.mp4",
+    "status": "skipped",
+    "bytes": 66138737
+  },
+  {
+    "path": "public/assets/media/s-bim-accuracy.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-bim-accuracy.jpg",
+    "status": "skipped",
+    "bytes": 70219
+  },
+  {
+    "path": "public/assets/media/s-bim-speed.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-bim-speed.jpg",
+    "status": "skipped",
+    "bytes": 74168
+  },
+  {
+    "path": "public/assets/media/s-cad-accuracy.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-cad-accuracy.jpg",
+    "status": "skipped",
+    "bytes": 45952
+  },
+  {
+    "path": "public/assets/media/s-cad-speed.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-cad-speed.jpg",
+    "status": "skipped",
+    "bytes": 36304
+  },
+  {
+    "path": "public/assets/media/s-launch-video.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-launch-video.jpg",
+    "status": "skipped",
+    "bytes": 89667
+  },
+  {
+    "path": "public/assets/media/s-stage-construct.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-stage-construct.jpg",
+    "status": "skipped",
+    "bytes": 42321
+  },
+  {
+    "path": "public/assets/media/s-stage-decompose.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-stage-decompose.jpg",
+    "status": "skipped",
+    "bytes": 34842
+  },
+  {
+    "path": "public/assets/media/s-stage-explore.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-stage-explore.jpg",
+    "status": "skipped",
+    "bytes": 64929
+  },
+  {
+    "path": "public/assets/media/s-stage-sketch.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/s-stage-sketch.jpg",
+    "status": "skipped",
+    "bytes": 15262
+  },
+  {
+    "path": "public/assets/media/stage-construct.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/stage-construct.mp4",
+    "status": "skipped",
+    "bytes": 1384271
+  },
+  {
+    "path": "public/assets/media/stage-decompose.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/stage-decompose.mp4",
+    "status": "skipped",
+    "bytes": 1457733
+  },
+  {
+    "path": "public/assets/media/stage-explore.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/stage-explore.mp4",
+    "status": "skipped",
+    "bytes": 789001
+  },
+  {
+    "path": "public/assets/media/stage-sketch.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/media/stage-sketch.mp4",
+    "status": "skipped",
+    "bytes": 627219
+  },
+  {
+    "path": "public/assets/showcase/img/in_arcmate.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/img/in_arcmate.webp",
+    "status": "skipped",
+    "bytes": 19748
+  },
+  {
+    "path": "public/assets/showcase/img/in_jaguar.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/img/in_jaguar.webp",
+    "status": "skipped",
+    "bytes": 19164
+  },
+  {
+    "path": "public/assets/showcase/img/in_jet.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/img/in_jet.webp",
+    "status": "skipped",
+    "bytes": 26356
+  },
+  {
+    "path": "public/assets/showcase/img/in_tractor.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/img/in_tractor.webp",
+    "status": "skipped",
+    "bytes": 29104
+  },
+  {
+    "path": "public/assets/showcase/reel/arcmate.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/reel/arcmate.mp4",
+    "status": "skipped",
+    "bytes": 620720
+  },
+  {
+    "path": "public/assets/showcase/reel/jaguar.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/reel/jaguar.mp4",
+    "status": "skipped",
+    "bytes": 2378160
+  },
+  {
+    "path": "public/assets/showcase/reel/jet.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/reel/jet.mp4",
+    "status": "skipped",
+    "bytes": 1889732
+  },
+  {
+    "path": "public/assets/showcase/reel/tractor.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/reel/tractor.mp4",
+    "status": "skipped",
+    "bytes": 2009998
+  },
+  {
+    "path": "public/assets/showcase/seq/arcmate_final.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/arcmate_final.webp",
+    "status": "skipped",
+    "bytes": 34464
+  },
+  {
+    "path": "public/assets/showcase/seq/arcmate_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/arcmate_poster.webp",
+    "status": "skipped",
+    "bytes": 20128
+  },
+  {
+    "path": "public/assets/showcase/seq/jaguar_final.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/jaguar_final.webp",
+    "status": "skipped",
+    "bytes": 117906
+  },
+  {
+    "path": "public/assets/showcase/seq/jaguar_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/jaguar_poster.webp",
+    "status": "skipped",
+    "bytes": 50244
+  },
+  {
+    "path": "public/assets/showcase/seq/jet_final.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/jet_final.webp",
+    "status": "skipped",
+    "bytes": 114830
+  },
+  {
+    "path": "public/assets/showcase/seq/jet_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/jet_poster.webp",
+    "status": "skipped",
+    "bytes": 41712
+  },
+  {
+    "path": "public/assets/showcase/seq/tractor_final.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/tractor_final.webp",
+    "status": "skipped",
+    "bytes": 80288
+  },
+  {
+    "path": "public/assets/showcase/seq/tractor_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/showcase/seq/tractor_poster.webp",
+    "status": "skipped",
+    "bytes": 61358
+  },
+  {
+    "path": "public/assets/team/kaheer-suleman.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/kaheer-suleman.jpg",
+    "status": "skipped",
+    "bytes": 66604
+  },
+  {
+    "path": "public/assets/team/sam-pasupalak.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/sam-pasupalak.jpg",
+    "status": "skipped",
+    "bytes": 61096
+  },
+  {
+    "path": "public/assets/team/sumit-pasupalak.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/assets/team/sumit-pasupalak.jpg",
+    "status": "skipped",
+    "bytes": 69946
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/asset-cache.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/asset-cache.js",
+    "status": "unchanged",
+    "bytes": 1161
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/composer-parts.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/composer-parts.js",
+    "status": "unchanged",
+    "bytes": 10036
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/dataset-comparison.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/dataset-comparison.js",
+    "status": "unchanged",
+    "bytes": 3177
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/dataset-comparison.json",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/dataset-comparison.json",
+    "status": "unchanged",
+    "bytes": 4188
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/dataset-viewer.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/dataset-viewer.js",
+    "status": "unchanged",
+    "bytes": 22142
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/embed.css",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/embed.css",
+    "status": "unchanged",
+    "bytes": 144865
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/floor-buildout-beats.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/floor-buildout-beats.js",
+    "status": "unchanged",
+    "bytes": 2040
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/floor-buildout.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/floor-buildout.js",
+    "status": "unchanged",
+    "bytes": 11505
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/fonts/geist-mono-variable.woff2",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/fonts/geist-mono-variable.woff2",
+    "status": "skipped",
+    "bytes": 71368
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/fonts/geist-variable.woff2",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/fonts/geist-variable.woff2",
+    "status": "skipped",
+    "bytes": 69652
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/fonts/inter-latin-var.woff2",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/fonts/inter-latin-var.woff2",
+    "status": "skipped",
+    "bytes": 48432
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/fonts/jetbrains-mono-latin-var.woff2",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/fonts/jetbrains-mono-latin-var.woff2",
+    "status": "skipped",
+    "bytes": 31340
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/fonts/stix-two-text-400.woff2",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/fonts/stix-two-text-400.woff2",
+    "status": "skipped",
+    "bytes": 73688
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/hero.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/hero.js",
+    "status": "unchanged",
+    "bytes": 8767
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/jaguar-stages.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/jaguar-stages.js",
+    "status": "unchanged",
+    "bytes": 23402
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/lazy-video.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/lazy-video.js",
+    "status": "unchanged",
+    "bytes": 579
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/main.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/main.js",
+    "status": "unchanged",
+    "bytes": 2905
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/composer-compare/part-detail_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/composer-compare/part-detail_poster.webp",
+    "status": "skipped",
+    "bytes": 14482
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/composer-compare/part-detail.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/composer-compare/part-detail.mp4",
+    "status": "skipped",
+    "bytes": 3283993
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/bicycle.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/bicycle.jpg",
+    "status": "skipped",
+    "bytes": 54045
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/bicycle.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/bicycle.mp4",
+    "status": "skipped",
+    "bytes": 891212
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/motorcycle.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/motorcycle.jpg",
+    "status": "skipped",
+    "bytes": 55654
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/motorcycle.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/motorcycle.mp4",
+    "status": "skipped",
+    "bytes": 1015178
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/robot.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/robot.jpg",
+    "status": "skipped",
+    "bytes": 52972
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/dataset-videos/robot.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/dataset-videos/robot.mp4",
+    "status": "skipped",
+    "bytes": 1132251
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1933_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1933_poster.webp",
+    "status": "skipped",
+    "bytes": 11774,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1933.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1933.mp4",
+    "status": "skipped",
+    "bytes": 1199559,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1977_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1977_poster.webp",
+    "status": "skipped",
+    "bytes": 11462,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1977.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-1977.mp4",
+    "status": "skipped",
+    "bytes": 975472,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-2544_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-2544_poster.webp",
+    "status": "skipped",
+    "bytes": 16118,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-2544.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-2544.mp4",
+    "status": "skipped",
+    "bytes": 1240875,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-25878_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-25878_poster.webp",
+    "status": "skipped",
+    "bytes": 12428,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-25878.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-25878.mp4",
+    "status": "skipped",
+    "bytes": 1104526,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-3582_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-3582_poster.webp",
+    "status": "skipped",
+    "bytes": 12380,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-3582.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-3582.mp4",
+    "status": "skipped",
+    "bytes": 1136389,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-5209_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-5209_poster.webp",
+    "status": "skipped",
+    "bytes": 14338,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-5209.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-5209.mp4",
+    "status": "skipped",
+    "bytes": 939903,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-8252_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-8252_poster.webp",
+    "status": "skipped",
+    "bytes": 11126,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-buildout/floor-8252.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-buildout/floor-8252.mp4",
+    "status": "skipped",
+    "bytes": 891540,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/rooms-1-unit.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-1-unit.svg",
+    "status": "unchanged",
+    "bytes": 12915
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/rooms-2-partway.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-2-partway.svg",
+    "status": "unchanged",
+    "bytes": 13997
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/rooms-3-finished.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/rooms-3-finished.svg",
+    "status": "unchanged",
+    "bytes": 17725
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/units-1-outline.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-1-outline.svg",
+    "status": "unchanged",
+    "bytes": 1815
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/units-2-walls.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-2-walls.svg",
+    "status": "unchanged",
+    "bytes": 4365
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/floor-flow/units-3-layout.svg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/floor-flow/units-3-layout.svg",
+    "status": "unchanged",
+    "bytes": 10043
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/explode/arcmate.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/explode/arcmate.mp4",
+    "status": "skipped",
+    "bytes": 713957,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/explode/jaguar.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/explode/jaguar.mp4",
+    "status": "skipped",
+    "bytes": 2473688,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/explode/jet.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/explode/jet.mp4",
+    "status": "skipped",
+    "bytes": 1916712,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/explode/tractor.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/explode/tractor.mp4",
+    "status": "skipped",
+    "bytes": 2277207,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/grid/arcmate.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/grid/arcmate.mp4",
+    "status": "skipped",
+    "bytes": 1035513,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/grid/jaguar.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/grid/jaguar.mp4",
+    "status": "skipped",
+    "bytes": 2413398,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/grid/jet.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/grid/jet.mp4",
+    "status": "skipped",
+    "bytes": 2626482,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/compact/grid/tractor.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/compact/grid/tractor.mp4",
+    "status": "skipped",
+    "bytes": 2218963,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/arcmate_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/arcmate_poster.webp",
+    "status": "skipped",
+    "bytes": 8512,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/arcmate.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/arcmate.mp4",
+    "status": "skipped",
+    "bytes": 1079827,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/jaguar_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jaguar_poster.webp",
+    "status": "skipped",
+    "bytes": 12640,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/jaguar.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jaguar.mp4",
+    "status": "skipped",
+    "bytes": 3832923,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/jet_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jet_poster.webp",
+    "status": "skipped",
+    "bytes": 16648,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/jet.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/jet.mp4",
+    "status": "skipped",
+    "bytes": 2989017,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/tractor_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/tractor_poster.webp",
+    "status": "skipped",
+    "bytes": 18718,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/explode/tractor.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/explode/tractor.mp4",
+    "status": "skipped",
+    "bytes": 3452464,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/arcmate_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/arcmate_poster.webp",
+    "status": "skipped",
+    "bytes": 10740,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/arcmate_sketch_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/arcmate_sketch_poster.webp",
+    "status": "skipped",
+    "bytes": 14998,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/arcmate.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/arcmate.mp4",
+    "status": "skipped",
+    "bytes": 1504931,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jaguar_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jaguar_poster.webp",
+    "status": "skipped",
+    "bytes": 10690,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jaguar_sketch_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jaguar_sketch_poster.webp",
+    "status": "skipped",
+    "bytes": 49596,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jaguar.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jaguar.mp4",
+    "status": "skipped",
+    "bytes": 3522174,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jet_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jet_poster.webp",
+    "status": "skipped",
+    "bytes": 13402,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jet_sketch_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jet_sketch_poster.webp",
+    "status": "skipped",
+    "bytes": 37308,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/jet.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/jet.mp4",
+    "status": "skipped",
+    "bytes": 3940659,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/tractor_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/tractor_poster.webp",
+    "status": "skipped",
+    "bytes": 14288,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/tractor_sketch_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/tractor_sketch_poster.webp",
+    "status": "skipped",
+    "bytes": 40810,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/grid/tractor.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/grid/tractor.mp4",
+    "status": "skipped",
+    "bytes": 3286728,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/seq/arcmate_f087.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/arcmate_f087.webp",
+    "status": "skipped",
+    "bytes": 37532,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/seq/jaguar_f087.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/jaguar_f087.webp",
+    "status": "skipped",
+    "bytes": 141250,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/seq/jet_f087.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/jet_f087.webp",
+    "status": "skipped",
+    "bytes": 112034
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/hero/seq/tractor_f087.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/hero/seq/tractor_f087.webp",
+    "status": "skipped",
+    "bytes": 110022,
+    "optional": true
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/bmx-poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/bmx-poster.webp",
+    "status": "skipped",
+    "bytes": 13422
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/bmx.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/bmx.glb.gz",
+    "status": "skipped",
+    "bytes": 1228226
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/bmx.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/bmx.json",
+    "status": "unchanged",
+    "bytes": 2502
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/ducati-display.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/ducati-display.glb.gz",
+    "status": "skipped",
+    "bytes": 3199060
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/ducati-display.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/ducati-display.json",
+    "status": "unchanged",
+    "bytes": 302143
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/ducati-hierarchy.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/ducati-hierarchy.json",
+    "status": "unchanged",
+    "bytes": 34830
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/ducati-poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/ducati-poster.webp",
+    "status": "skipped",
+    "bytes": 32436
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-display.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-display.glb.gz",
+    "status": "skipped",
+    "bytes": 4677059
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-display.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-display.json",
+    "status": "unchanged",
+    "bytes": 352187
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-hierarchy.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-hierarchy.json",
+    "status": "unchanged",
+    "bytes": 22252
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/fatbike-poster.webp",
+    "status": "skipped",
+    "bytes": 26906
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/harley-poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/harley-poster.webp",
+    "status": "skipped",
+    "bytes": 21218
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/harley.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/harley.glb.gz",
+    "status": "skipped",
+    "bytes": 295106
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/harley.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/harley.json",
+    "status": "unchanged",
+    "bytes": 9269
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-display.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-display.glb.gz",
+    "status": "skipped",
+    "bytes": 4884011
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-display.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-display.json",
+    "status": "unchanged",
+    "bytes": 242908
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-hierarchy.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/quadruped-hierarchy.json",
+    "status": "unchanged",
+    "bytes": 19480
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/robot.glb.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/robot.glb.gz",
+    "status": "skipped",
+    "bytes": 83506
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/robot.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/robot.json",
+    "status": "unchanged",
+    "bytes": 23609
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/models/dataset/studio-small.hdr",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/models/dataset/studio-small.hdr",
+    "status": "skipped",
+    "bytes": 131121
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/focus.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/focus.json",
+    "status": "unchanged",
+    "bytes": 8304
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/operations.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/operations.json",
+    "status": "unchanged",
+    "bytes": 18629
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/planes.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/planes.json",
+    "status": "unchanged",
+    "bytes": 1807
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/rollout.bin.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/rollout.bin.gz",
+    "status": "skipped",
+    "bytes": 7450
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/rollout.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/rollout.json",
+    "status": "unchanged",
+    "bytes": 2316
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-0.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-0.webp",
+    "status": "skipped",
+    "bytes": 117576
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-1.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-1.webp",
+    "status": "skipped",
+    "bytes": 70130
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-2.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-2.webp",
+    "status": "skipped",
+    "bytes": 160098
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-3.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-3.webp",
+    "status": "skipped",
+    "bytes": 166840
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-4.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-4.webp",
+    "status": "skipped",
+    "bytes": 163714
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/target.bin.gz",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/target.bin.gz",
+    "status": "skipped",
+    "bytes": 1272
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/target.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/target.json",
+    "status": "unchanged",
+    "bytes": 223
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent_poster.webp",
+    "status": "skipped",
+    "bytes": 11706
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-latent.mp4",
+    "status": "skipped",
+    "bytes": 308114
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined_poster.webp",
+    "status": "skipped",
+    "bytes": 10056
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-refined.mp4",
+    "status": "skipped",
+    "bytes": 132841
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target_poster.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target_poster.webp",
+    "status": "skipped",
+    "bytes": 11082
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/sketch-rollout/profile-target.mp4",
+    "status": "skipped",
+    "bytes": 86241
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_00_00_00_04.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_00_00_00_04.glb",
+    "status": "skipped",
+    "bytes": 1324220
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_00_00_01_02.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_00_00_01_02.glb",
+    "status": "skipped",
+    "bytes": 1562364
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_01_00_02_00.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_00_01_00_02_00.glb",
+    "status": "skipped",
+    "bytes": 1472368
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_04_01_01.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_04_01_01.glb",
+    "status": "skipped",
+    "bytes": 1399296
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_04_01_02.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/ex_r_04_01_02.glb",
+    "status": "skipped",
+    "bytes": 1341108
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/hier_refined.glb",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/hier_refined.glb",
+    "status": "skipped",
+    "bytes": 14089784
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/hier_tree.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/hier_tree.json",
+    "status": "unchanged",
+    "bytes": 53017
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/input.webp",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/input.webp",
+    "status": "skipped",
+    "bytes": 39268
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/media/vms-stages/whole_colors.json",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/media/vms-stages/whole_colors.json",
+    "status": "unchanged",
+    "bytes": 476
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/playback-visibility.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/playback-visibility.js",
+    "status": "unchanged",
+    "bytes": 1114
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/sketch-comparison.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/sketch-comparison.js",
+    "status": "unchanged",
+    "bytes": 33132
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/sketch-comparison.json",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/sketch-comparison.json",
+    "status": "unchanged",
+    "bytes": 724
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/sketch-input.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/sketch-input.js",
+    "status": "unchanged",
+    "bytes": 6656
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/sketch-operations.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/sketch-operations.js",
+    "status": "unchanged",
+    "bytes": 3930
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/sketch-rollouts.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/sketch-rollouts.js",
+    "status": "unchanged",
+    "bytes": 687
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-embeds/introducing-sky-001/thumb.jpg",
+    "status": "skipped",
+    "bytes": 146025
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/dataset/BufferGeometryUtils.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/dataset/BufferGeometryUtils.js",
+    "status": "unchanged",
+    "bytes": 13227
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/dataset/GLTFLoader.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/dataset/GLTFLoader.js",
+    "status": "unchanged",
+    "bytes": 45422
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/dataset/meshopt_decoder.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/dataset/meshopt_decoder.js",
+    "status": "unchanged",
+    "bytes": 26294
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/dataset/OrbitControls.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/dataset/OrbitControls.js",
+    "status": "unchanged",
+    "bytes": 13069
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/dataset/RGBELoader.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/dataset/RGBELoader.js",
+    "status": "unchanged",
+    "bytes": 3561
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/segmentation-metrics.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/segmentation-metrics.js",
+    "status": "unchanged",
+    "bytes": 1464
+  },
+  {
+    "path": "public/blog-embeds/introducing-sky-001/vendor/three.module.js",
+    "url": "https://skyfall.ai/blog-embeds/introducing-sky-001/vendor/three.module.js",
+    "status": "unchanged",
+    "bytes": 667460
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/game-comparision.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/game-comparision.jpg",
+    "status": "skipped",
+    "bytes": 405652
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/game-image-2.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/game-image-2.png",
+    "status": "skipped",
+    "bytes": 1434981
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/game-image-3.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/game-image-3.png",
+    "status": "skipped",
+    "bytes": 1736373
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/games-resized.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/games-resized.jpg",
+    "status": "skipped",
+    "bytes": 371999
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/hero-resized.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/hero-resized.jpg",
+    "status": "skipped",
+    "bytes": 376573
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/learning-impact-gpt.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/learning-impact-gpt.jpg",
+    "status": "skipped",
+    "bytes": 89905
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/learning-impact.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/learning-impact.jpg",
+    "status": "skipped",
+    "bytes": 86384
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/park-value-base.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/park-value-base.jpg",
+    "status": "skipped",
+    "bytes": 245884
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/park-value-scaled.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/park-value-scaled.jpg",
+    "status": "skipped",
+    "bytes": 133396
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/rct-comparision-table-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/rct-comparision-table-1.jpg",
+    "status": "skipped",
+    "bytes": 166037
+  },
+  {
+    "path": "public/blog-media/building-the-foundations-of-an-ai-ceo/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/building-the-foundations-of-an-ai-ceo/thumb.jpg",
+    "status": "skipped",
+    "bytes": 111410
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-1.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-1.mp4",
+    "status": "skipped",
+    "bytes": 1778016
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-2.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-2.mp4",
+    "status": "skipped",
+    "bytes": 1549620
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-3-1.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-3-1.png",
+    "status": "skipped",
+    "bytes": 45529
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-3-2.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-3-2.png",
+    "status": "skipped",
+    "bytes": 26564
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-4-1.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-4-1.png",
+    "status": "skipped",
+    "bytes": 28114
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-4-2.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-4-2.png",
+    "status": "skipped",
+    "bytes": 2261790
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-5-1.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-5-1.mp4",
+    "status": "skipped",
+    "bytes": 906556
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-5-2.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-5-2.mp4",
+    "status": "skipped",
+    "bytes": 1607808
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-6.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-6.mp4",
+    "status": "skipped",
+    "bytes": 681428
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-7.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-7.mp4",
+    "status": "skipped",
+    "bytes": 1019028
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-8.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-8.mp4",
+    "status": "skipped",
+    "bytes": 2201746
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-9.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/claude-opus-4-6-9.mp4",
+    "status": "skipped",
+    "bytes": 1018256
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-1.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-1.mp4",
+    "status": "skipped",
+    "bytes": 778583
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-2.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-2.mp4",
+    "status": "skipped",
+    "bytes": 579786
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-3.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-3.mp4",
+    "status": "skipped",
+    "bytes": 427844
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-4.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/gemini-3-1-pro-4.mp4",
+    "status": "skipped",
+    "bytes": 511156
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/gpt-4-no-test-no-refunds.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/gpt-4-no-test-no-refunds.mp4",
+    "status": "skipped",
+    "bytes": 2486519
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/hero-claude-gpt-arc-agi-vs-business-failure.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/hero-claude-gpt-arc-agi-vs-business-failure.png",
+    "status": "skipped",
+    "bytes": 103307
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/oss-rct.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/oss-rct.mp4",
+    "status": "skipped",
+    "bytes": 261328
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/rct-codeblock-1.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/rct-codeblock-1.png",
+    "status": "skipped",
+    "bytes": 350300
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/rct-codeblock-2.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/rct-codeblock-2.png",
+    "status": "skipped",
+    "bytes": 191472
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/repl-arc-agi-business.mp4",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/repl-arc-agi-business.mp4",
+    "status": "skipped",
+    "bytes": 60555
+  },
+  {
+    "path": "public/blog-media/claude-gpt-arc-agi-vs-business-failure/thumb.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/claude-gpt-arc-agi-vs-business-failure/thumb.png",
+    "status": "skipped",
+    "bytes": 74617
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/01-eudaimonia-cover.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/01-eudaimonia-cover.png",
+    "status": "skipped",
+    "bytes": 1026086
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/02-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/02-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 544597
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/03-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/03-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 205773
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/04-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/04-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 131901
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/05-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/05-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 113283
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/06-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/06-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 305221
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/07-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/07-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 601870
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/08-eudaimonia.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/08-eudaimonia.png",
+    "status": "skipped",
+    "bytes": 420789
+  },
+  {
+    "path": "public/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/thumb.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/how-enterprise-world-models-lead-to-eudaimonia-and-global-prosperity/thumb.png",
+    "status": "skipped",
+    "bytes": 346014
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/00-hero-llms-continual-learners.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/00-hero-llms-continual-learners.jpg",
+    "status": "skipped",
+    "bytes": 332824
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/01-models-evaluated.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/01-models-evaluated.jpg",
+    "status": "skipped",
+    "bytes": 48865
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/02-gemini-3-1-pro.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/02-gemini-3-1-pro.jpg",
+    "status": "skipped",
+    "bytes": 89263
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/03-gpt-5.5.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/03-gpt-5.5.jpg",
+    "status": "skipped",
+    "bytes": 87419
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/04-stable-performance.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/04-stable-performance.jpg",
+    "status": "skipped",
+    "bytes": 197884
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/05-policy-quality.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/05-policy-quality.jpg",
+    "status": "skipped",
+    "bytes": 93282
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/06-detection-lag-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/06-detection-lag-1.jpg",
+    "status": "skipped",
+    "bytes": 155869
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/07-delayed-consequences.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/07-delayed-consequences.jpg",
+    "status": "skipped",
+    "bytes": 237266
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/08-performance-gap.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/08-performance-gap.jpg",
+    "status": "skipped",
+    "bytes": 90801
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/09-allocation-shape.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/09-allocation-shape.jpg",
+    "status": "skipped",
+    "bytes": 86709
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/10-divergent-heuristics.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/10-divergent-heuristics.jpg",
+    "status": "skipped",
+    "bytes": 256502
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/11-hit-rate.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/11-hit-rate.jpg",
+    "status": "skipped",
+    "bytes": 59741
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/12-degradation-curves.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/12-degradation-curves.jpg",
+    "status": "skipped",
+    "bytes": 417618
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/13-metric-decomposition.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/13-metric-decomposition.jpg",
+    "status": "skipped",
+    "bytes": 135328
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/14-llms-failure-diagnosis.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/14-llms-failure-diagnosis.jpg",
+    "status": "skipped",
+    "bytes": 255114
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/15-results-summary.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/15-results-summary.jpg",
+    "status": "skipped",
+    "bytes": 153955
+  },
+  {
+    "path": "public/blog-media/llms-are-not-continual-learners/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/llms-are-not-continual-learners/thumb.jpg",
+    "status": "skipped",
+    "bytes": 66378
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/agent-survival-over-time.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/agent-survival-over-time.jpg",
+    "status": "skipped",
+    "bytes": 138720
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/ai-ceo-table-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/ai-ceo-table-1.jpg",
+    "status": "skipped",
+    "bytes": 144180
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/architecture-network.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/architecture-network.jpg",
+    "status": "skipped",
+    "bytes": 140274
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/architecture-overview.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/architecture-overview.jpg",
+    "status": "skipped",
+    "bytes": 279786
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/fast-vs-slow-thinking-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/fast-vs-slow-thinking-1.jpg",
+    "status": "skipped",
+    "bytes": 96675
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/hero-pioneering-world-model-planning-enterprise.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/hero-pioneering-world-model-planning-enterprise.jpg",
+    "status": "skipped",
+    "bytes": 443794
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/race-track-car.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/race-track-car.jpg",
+    "status": "skipped",
+    "bytes": 105590
+  },
+  {
+    "path": "public/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/pioneering-steps-towards-building-world-models-for-planning-in-enterprise/thumb.jpg",
+    "status": "skipped",
+    "bytes": 98384
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/comparision-frontier-llm-vs-scope-on-textcraft.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/comparision-frontier-llm-vs-scope-on-textcraft.jpg",
+    "status": "skipped",
+    "bytes": 92251
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/frontier-llms-vs-scope-success-rate-textcraft-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/frontier-llms-vs-scope-success-rate-textcraft-1.jpg",
+    "status": "skipped",
+    "bytes": 92324
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/gpt-3.5-vs-scope-on-textcraft.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/gpt-3.5-vs-scope-on-textcraft.jpg",
+    "status": "skipped",
+    "bytes": 72388
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/gpt-4o-vs-scope-size-comparision-textcraft.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/gpt-4o-vs-scope-size-comparision-textcraft.jpg",
+    "status": "skipped",
+    "bytes": 71284
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/hero-scope-hierarchical-planner-55x-faster-than-llms.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/hero-scope-hierarchical-planner-55x-faster-than-llms.jpg",
+    "status": "skipped",
+    "bytes": 336133
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/scope-high-level-architecture.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/scope-high-level-architecture.jpg",
+    "status": "skipped",
+    "bytes": 140618
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/scope-sustaiability-ai-inference.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/scope-sustaiability-ai-inference.jpg",
+    "status": "skipped",
+    "bytes": 167632
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/subgoal-quality-impact-agent-performance.png",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/subgoal-quality-impact-agent-performance.png",
+    "status": "skipped",
+    "bytes": 97723
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/textcraft-task-completion-overview.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/textcraft-task-completion-overview.jpg",
+    "status": "skipped",
+    "bytes": 161839
+  },
+  {
+    "path": "public/blog-media/scope-hierarchical-planner-55x-faster-than-llms/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/scope-hierarchical-planner-55x-faster-than-llms/thumb.jpg",
+    "status": "skipped",
+    "bytes": 108720
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/agent-action-trigger-constraints-violation.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/agent-action-trigger-constraints-violation.jpg",
+    "status": "skipped",
+    "bytes": 183280
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/aggregated-task-categories.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/aggregated-task-categories.jpg",
+    "status": "skipped",
+    "bytes": 107095
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/hero-wow-ai-safety-world-models-1.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/hero-wow-ai-safety-world-models-1.jpg",
+    "status": "skipped",
+    "bytes": 333614
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/thumb.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/thumb.jpg",
+    "status": "skipped",
+    "bytes": 78527
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-ai-safety-importance.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-ai-safety-importance.jpg",
+    "status": "skipped",
+    "bytes": 142783
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-vs-enterprise-ai-safety.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-vs-enterprise-ai-safety.jpg",
+    "status": "skipped",
+    "bytes": 191496
+  },
+  {
+    "path": "public/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-vs-enterprise-workflows-business-rules.jpg",
+    "url": "https://dkr5ukfddrfw9.cloudfront.net/web/blog-media/wow-bridging-ai-safety-gap-in-enterprises-via-world-models/wow-vs-enterprise-workflows-business-rules.jpg",
+    "status": "skipped",
+    "bytes": 157209
+  }
+]

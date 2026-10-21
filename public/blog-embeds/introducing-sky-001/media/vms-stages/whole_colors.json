@@ -1,0 +1,16 @@
+{
+  "_note": "Whole-engine colours sampled by eye from input.webp; a leaf takes the entry with the longest matching id prefix, '*' is the fallback and the tree strip's root",
+  "*": "#8e9b92",
+  "r_00": "#8e9b92",
+  "r_00_02_00": "#9ca3a7",
+  "r_01": "#c6c9cb",
+  "r_01_00_00": "#c09f66",
+  "r_01_00_01": "#a2aaa9",
+  "r_01_00_02": "#a2aaa9",
+  "r_02": "#cfd2d4",
+  "r_03": "#cfd2d4",
+  "r_04": "#8f9498",
+  "r_04_00_00": "#363b3e",
+  "r_05": "#b9b2a4",
+  "r_06": "#b9b2a4"
+}

@@ -1,0 +1,108 @@
+{
+  "assetId": "vms85-970000004",
+  "name": "VMS-85 part 970000004",
+  "mode": "prediction",
+  "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/rollout.bin.gz",
+  "steps": [
+    {
+      "label": "0",
+      "kind": "extrude",
+      "sign": "add",
+      "v": {
+        "offset": 0,
+        "count": 378
+      },
+      "f": {
+        "offset": 1512,
+        "count": 744
+      },
+      "sketch": {
+        "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-0.webp",
+        "width": 384,
+        "height": 384,
+        "columns": 6,
+        "frames": 16
+      }
+    },
+    {
+      "label": "1",
+      "kind": "extrude",
+      "sign": "add",
+      "v": {
+        "offset": 4488,
+        "count": 414
+      },
+      "f": {
+        "offset": 6144,
+        "count": 816
+      },
+      "sketch": {
+        "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-1.webp",
+        "width": 384,
+        "height": 384,
+        "columns": 6,
+        "frames": 12
+      }
+    },
+    {
+      "label": "2",
+      "kind": "extrude",
+      "sign": "cut",
+      "v": {
+        "offset": 9408,
+        "count": 564
+      },
+      "f": {
+        "offset": 11664,
+        "count": 1128
+      },
+      "sketch": {
+        "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-2.webp",
+        "width": 384,
+        "height": 384,
+        "columns": 6,
+        "frames": 12
+      }
+    },
+    {
+      "label": "3",
+      "kind": "extrude",
+      "sign": "cut",
+      "v": {
+        "offset": 16176,
+        "count": 606
+      },
+      "f": {
+        "offset": 18600,
+        "count": 1224
+      },
+      "sketch": {
+        "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-3.webp",
+        "width": 384,
+        "height": 384,
+        "columns": 6,
+        "frames": 12
+      }
+    },
+    {
+      "label": "4",
+      "kind": "extrude",
+      "sign": "cut",
+      "v": {
+        "offset": 23496,
+        "count": 696
+      },
+      "f": {
+        "offset": 26280,
+        "count": 1416
+      },
+      "sketch": {
+        "src": "/blog-embeds/introducing-sky-001/media/sketch-comparison/vms85/sketch-4.webp",
+        "width": 384,
+        "height": 384,
+        "columns": 6,
+        "frames": 12
+      }
+    }
+  ]
+}
