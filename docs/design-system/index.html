@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyfall AI · Design System</title>
+<meta name="description" content="The Skyfall AI design system: tokens, typography, layout, fields, components and motion, extracted from the production site.">
+<style>
+/* ───────────────────────────── Fonts (served from /public/fonts) ───────────────────────────── */
+@font-face{font-family:"Geist";src:url("../../public/fonts/Geist-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("../../public/fonts/GeistMono-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+
+/* ───────────────────────────── Tokens (mirrors src/app/globals.css @theme) ───────────────────────────── */
+:root{
+  --font-sans:"Geist",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --brand:#3e57da;--brand-lift:#6f83f0;--paper:#fff;--studio:#f6f6f6;--ink:#1a1a1a;--body:#474747;--muted:#7a7a7a;
+  --faint:#adadad;--slash:#ccc;--line:#e0e0e0;--dot:#d4d4d4;--tint:#eef1fd;--ghost:#b9c3f2;--bar:#c4c4c4;
+  --grid:#3e57da1a;--grid-on-dark:#ffffff1a;--night:#1a1a1a;--night-mid:#474747;--night-text:#a3a3a3;--error:#c2362f;
+  --ease-out-expo:cubic-bezier(.16,1,.3,1);--ease-dialog:cubic-bezier(.22,1,.36,1);
+  --container:1208px;--gutter:24px;
+}
+@media (min-width:768px){:root{--gutter:40px}}
+
+/* ───────────────────────────── Base ───────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-rendering:optimizelegibility;-webkit-font-smoothing:antialiased;scroll-padding-top:72px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.5;letter-spacing:-.02em;overflow-x:clip}
+::selection{background:var(--brand);color:#fff}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img,svg,video{display:block;max-width:100%}
+code{font-family:var(--font-mono);font-size:.92em}
+
+/* ───────────────────────────── Utilities ───────────────────────────── */
+.mono{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase}
+@media (min-width:768px){.mono{font-size:13px}}
+.mono-sm{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:capitalize}
+.slash::before{content:"/ ";color:var(--brand);font-family:var(--font-mono)}
+.container{width:100%;max-width:var(--container);margin:0 auto}
+.gutter{padding-left:var(--gutter);padding-right:var(--gutter)}
+.dots{background:var(--studio) radial-gradient(var(--dot) 1px,transparent 1.3px) 0 0/12px 12px}
+.dots-grey{background:#fafafa radial-gradient(#d4d4d4 1px,#0000 1.3px) 0 0/6px 6px}
+.grid-dark{background:var(--night) linear-gradient(var(--grid-on-dark) 1px,transparent 1px) -1px -1px/44px 44px,var(--night) linear-gradient(90deg,var(--grid-on-dark) 1px,transparent 1px) -1px -1px/44px 44px}
+.grid-light{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px}
+.grid-blue{background-image:linear-gradient(var(--grid-on-dark) 1px,transparent 1px),linear-gradient(90deg,var(--grid-on-dark) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px}
+
+/* ───────────────────────────── Chrome ───────────────────────────── */
+.topbar{position:fixed;inset:0 0 auto;z-index:50;height:56px;background:var(--paper);border-bottom:1px solid var(--line);padding:0 var(--gutter)}
+.topbar__in{display:flex;height:100%;max-width:var(--container);margin:0 auto;align-items:stretch;justify-content:space-between}
+.topbar__logo{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
+.topbar__logo span{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:14px}
+.topbar__tabs{display:none}
+@media (min-width:1024px){.topbar__tabs{display:flex;font-family:var(--font-mono);font-size:13px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase}}
+.topbar__tabs li{display:flex}
+.topbar__tabs a{display:flex;align-items:center;padding:0 16px;text-decoration:none;border-right:1px solid var(--line);transition:background .3s var(--ease-out-expo),color .3s}
+.topbar__tabs li:first-child a{border-left:1px solid var(--line)}
+.topbar__tabs a:hover{background:var(--studio)}
+.topbar__tabs a[aria-current]{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+main{padding-top:56px}
+
+/* ───────────────────────────── Sections ───────────────────────────── */
+.section{position:relative;padding:64px var(--gutter)}
+@media (min-width:768px){.section{padding:96px var(--gutter)}}
+@media (min-width:1024px){.section{padding:112px var(--gutter)}}
+.section--studio{background:var(--studio)}
+.section--night{color:#fff}
+.section--ink{background:var(--night);color:#fff}
+.section--blue{background:var(--brand);color:#fff}
+.frame{position:relative;padding:24px 0}
+@media (min-width:768px){.frame{padding:40px 0}}
+.frame::before,.frame::after,.frame>i::before,.frame>i::after{content:"";position:absolute;width:8px;height:8px;border:0 solid rgb(26 26 26/.5)}
+.frame::before{top:0;left:0;border-top-width:1px;border-left-width:1px}
+.frame::after{top:0;right:0;border-top-width:1px;border-right-width:1px}
+.frame>i::before{bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}
+.frame>i::after{bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
+.frame--dark::before,.frame--dark::after,.frame--dark>i::before,.frame--dark>i::after{border-color:rgb(255 255 255/.6)}
+.h-display{font-size:46px;line-height:.92;font-weight:500;letter-spacing:-.045em;text-transform:capitalize;text-wrap:balance}
+@media (min-width:640px){.h-display{font-size:84px}}
+@media (min-width:1024px){.h-display{font-size:128px;line-height:.86}}
+.h-section{font-size:40px;line-height:.95;font-weight:500;letter-spacing:-.045em;text-transform:capitalize;text-wrap:balance;max-width:16ch}
+@media (min-width:640px){.h-section{font-size:64px}}
+@media (min-width:1024px){.h-section{font-size:96px;line-height:.9}}
+.h-section--md{font-size:34px;line-height:.98}
+@media (min-width:640px){.h-section--md{font-size:48px}}
+@media (min-width:1024px){.h-section--md{font-size:64px;line-height:.94}}
+.h-grid{font-size:30px;line-height:1;font-weight:500;letter-spacing:-.045em}
+@media (min-width:768px){.h-grid{font-size:44px}}
+.grid-header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:16px;margin:48px 0 28px}
+.section--ink .grid-header,.section--blue .grid-header{border-color:currentColor}
+.lede{font-size:17px;line-height:1.25;letter-spacing:-.02em;color:var(--body);max-width:44ch}
+@media (min-width:768px){.lede{font-size:19px}}
+.section--ink .lede,.section--blue .lede{color:rgb(255 255 255/.85)}
+.note{margin-top:16px;color:var(--body)}
+.section--ink .note{color:rgb(255 255 255/.8)}
+
+/* hairline grid */
+.cells{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.cells>*{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px;background:var(--paper);min-width:0}
+@media (min-width:768px){.cells>*{padding:24px}}
+.cells--2{grid-template-columns:repeat(2,1fr)}
+@media (min-width:768px){.cells--3{grid-template-columns:repeat(3,1fr)}.cells--4{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.cells--4{grid-template-columns:repeat(4,1fr)}.cells--5{grid-template-columns:repeat(5,1fr)}}
+.cells--studio>*{background:var(--studio)}
+.cells--ink{border-color:var(--night-mid)}.cells--ink>*{border-color:var(--night-mid);background:var(--night);color:#fff}
+.cell-label{display:block;margin-bottom:12px;color:var(--muted)}
+.cells--ink .cell-label{color:var(--night-text)}
+.cell-value{font-family:var(--font-mono);font-size:12px;color:var(--body);word-break:break-word}
+.cells--ink .cell-value{color:var(--night-text)}
+
+/* label block */
+.label-block{display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-left:1px solid var(--ink);padding-left:10px}
+.label-block--dark{border-color:rgb(255 255 255/.7)}
+.label-block .mono-sm{color:var(--body)}.label-block--dark .mono-sm{color:rgb(255 255 255/.8)}
+
+/* ───────────────────────────── Swatches ───────────────────────────── */
+.swatch{padding:0!important;display:flex;flex-direction:column;cursor:copy;position:relative;transition:background .3s}
+.swatch:hover{background:var(--studio)}
+.swatch__chip{height:96px;border-bottom:1px solid var(--line);position:relative}
+.swatch__chip--outline{box-shadow:inset 0 0 0 1px var(--line)}
+.swatch__meta{padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.swatch__name{font-size:15px;font-weight:500;letter-spacing:-.03em}
+.swatch__hex{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-transform:uppercase}
+.swatch__role{font-size:13px;line-height:1.35;color:var(--body);margin-top:4px}
+.swatch__copied{position:absolute;top:8px;right:8px;background:var(--ink);color:#fff;font-family:var(--font-mono);font-size:10px;padding:2px 6px;opacity:0;transition:opacity .3s;text-transform:uppercase}
+.swatch.is-copied .swatch__copied{opacity:1}
+.ramp{display:grid;grid-template-columns:repeat(8,1fr);height:24px;border-top:1px solid var(--line)}
+.ramp span{display:block}
+
+/* ───────────────────────────── Type specimens ───────────────────────────── */
+.spec{display:grid;grid-template-columns:1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+@media (min-width:1024px){.spec{grid-template-columns:200px 1fr 260px;gap:32px;align-items:baseline}}
+.spec__name{display:flex;flex-direction:column;gap:6px}
+.spec__name .mono{color:var(--brand)}
+.spec__name small{font-size:13px;color:var(--muted)}
+.spec__sample{min-width:0;overflow-wrap:anywhere}
+.spec__values{font-family:var(--font-mono);font-size:11px;line-height:1.7;color:var(--body)}
+.spec__values b{font-weight:500;color:var(--ink)}
+.t-display{font-size:46px;line-height:.92;font-weight:500;letter-spacing:-.045em;text-transform:capitalize}
+@media (min-width:640px){.t-display{font-size:84px;line-height:.86}}
+.t-headline{font-size:40px;line-height:.95;font-weight:500;letter-spacing:-.045em;text-transform:capitalize}
+@media (min-width:640px){.t-headline{font-size:64px;line-height:.9}}
+.t-headline-md{font-size:34px;line-height:.98;font-weight:500;letter-spacing:-.045em;text-transform:capitalize}
+@media (min-width:640px){.t-headline-md{font-size:48px;line-height:.94}}
+.t-kpi{font-size:64px;line-height:.85;font-weight:500;letter-spacing:-.045em}
+.t-title{font-size:22px;line-height:1.15;font-weight:500;letter-spacing:-.05em}
+@media (min-width:768px){.t-title{font-size:26px}}
+.t-body{font-size:17px;line-height:1.25;letter-spacing:-.02em;color:var(--body);max-width:60ch}
+@media (min-width:768px){.t-body{font-size:19px}}
+.t-body-sm{font-size:15px;line-height:1.3;letter-spacing:-.02em;color:var(--body);max-width:60ch}
+.t-prose{font-size:17px;line-height:1.65;letter-spacing:-.01em;color:var(--body);max-width:65ch}
+@media (min-width:768px){.t-prose{font-size:18px}}
+.t-label{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase}
+.t-label-sm{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:capitalize;color:var(--body)}
+.t-button{font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:-.02em;text-transform:uppercase}
+.weights{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.weights span{flex:1 1 120px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;font-size:28px;letter-spacing:-.04em;display:flex;flex-direction:column;gap:8px}
+.weights span small{font-family:var(--font-mono);font-size:11px;letter-spacing:0;color:var(--muted)}
+.weights span.off{color:var(--faint);text-decoration:line-through}
+
+/* ───────────────────────────── Layout demos ───────────────────────────── */
+.ruler{position:relative;border:1px solid var(--ink);height:64px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;background:var(--tint);color:var(--brand)}
+.ruler::before,.ruler::after{content:"";position:absolute;top:0;bottom:0;width:var(--w);background:repeating-linear-gradient(135deg,var(--line) 0 1px,transparent 1px 8px);border-right:1px dashed var(--faint)}
+.ruler::before{left:0}.ruler::after{right:0;border-right:0;border-left:1px dashed var(--faint)}
+.spacing{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.spacing div{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.spacing i{display:block;width:var(--s);height:var(--s);background:var(--brand);min-width:4px;min-height:4px}
+.bp{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.bp div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:4px}
+.bp b{font-family:var(--font-mono);font-size:13px;font-weight:500}
+.bp small{font-size:13px;color:var(--body)}
+
+/* ───────────────────────────── Fields & shapes ───────────────────────────── */
+.fields{display:grid;gap:12px}
+@media (min-width:768px){.fields{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.fields{grid-template-columns:repeat(4,1fr)}}
+.field{position:relative;height:180px;border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px}
+.field .mono-sm{background:var(--ink);color:#fff;padding:2px 6px;text-transform:uppercase;letter-spacing:.02em;position:absolute;top:0;left:0}
+.field--grid{background:var(--paper)}
+.field--grid::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%)}
+.field--halftone{background:var(--paper);overflow:hidden}
+.field--halftone canvas{position:absolute;inset:0;width:100%;height:100%}
+.shapes{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.shapes>div{flex:1 1 160px;min-height:140px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.shapes .mono-sm{color:var(--muted)}
+.sq{display:block;background:var(--ink)}
+.corner-dots{position:relative;width:72px;height:48px;border:1px solid var(--line)}
+.corner-dots i{position:absolute;width:6px;height:6px;background:var(--ink)}
+.corner-dots i:nth-child(1){top:6px;left:6px}.corner-dots i:nth-child(2){top:6px;right:6px}.corner-dots i:nth-child(3){bottom:6px;left:6px}.corner-dots i:nth-child(4){bottom:6px;right:6px}
+.mini-frame{position:relative;width:96px;height:48px}
+.mini-frame::before,.mini-frame::after,.mini-frame i::before,.mini-frame i::after{content:"";position:absolute;width:8px;height:8px;border:0 solid rgb(26 26 26/.5)}
+.mini-frame::before{top:0;left:0;border-top-width:1px;border-left-width:1px}.mini-frame::after{top:0;right:0;border-top-width:1px;border-right-width:1px}
+.mini-frame i::before{bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}.mini-frame i::after{bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
+
+/* ───────────────────────────── Components ───────────────────────────── */
+.demo{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+@media (min-width:1024px){.demo{grid-template-columns:7fr 5fr}}
+.demo__stage{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 24px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;min-height:200px;background:var(--paper)}
+.demo__stage--studio{background:var(--studio)}
+.demo__stage--ink{background:var(--night);color:#fff}
+.demo__stage--blue{background:var(--brand);color:#fff}
+.demo__stage--dots{background:var(--studio) radial-gradient(var(--dot) 1px,transparent 1.3px) 0 0/12px 12px}
+.demo__stage--block{display:block}
+.demo__spec{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:14px;background:var(--paper)}
+.demo__spec h3{font-size:22px;line-height:1.15;font-weight:500;letter-spacing:-.05em}
+.demo__spec p{font-size:15px;line-height:1.4;color:var(--body)}
+.demo__spec dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px;border-top:1px dashed var(--line);padding-top:14px}
+.demo__spec dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.demo__spec dd{color:var(--ink)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:space-between;gap:32px;height:52px;padding:0 20px;overflow:hidden;font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;text-decoration:none;transition:color .3s,scale .3s}
+.btn--primary{min-width:220px;background:var(--ink);color:#fff}
+.btn--primary.btn--light{background:#fff;color:var(--ink)}
+.btn--primary.btn--light:hover{color:#fff}
+.btn--primary:active{scale:.98}
+.btn__panel{position:absolute;inset:0;background:var(--brand);transform:translateX(-100%);transition:transform .3s var(--ease-out-expo)}
+.btn--primary:hover .btn__panel,.btn--primary:focus-visible .btn__panel,.btn--primary:active .btn__panel{transform:none}
+.btn__sq{position:relative;order:2;width:8px;height:8px;background:#fff;transition:rotate .3s,background-color .3s}
+.btn--light .btn__sq{background:var(--ink)}.btn--light:hover .btn__sq{background:#fff}
+.btn--primary:hover .btn__sq{rotate:-180deg}
+.btn__label{position:relative;order:1}
+.btn--line{padding:0 4px;border-bottom:1px solid var(--ink);color:var(--ink);overflow:visible;transition:color .3s,border-color .3s}
+.btn--line:hover{color:var(--brand);border-color:var(--brand)}
+.btn--line.btn--dark{border-color:#fff;color:#fff}.btn--line.btn--dark:hover{color:var(--brand-lift);border-color:var(--brand-lift)}
+.btn__arrow{display:inline-block;transition:transform .3s}.btn--line:hover .btn__arrow{transform:translate(2px,-2px)}
+.btn--light:focus-visible,.btn--dark:focus-visible{outline-color:#fff}
+
+/* nav specimen */
+.nav-spec{width:100%;height:56px;border:1px solid var(--line);background:#fff;display:flex;align-items:stretch;justify-content:space-between;padding:0 24px}
+.nav-spec__logo{display:flex;align-items:center}
+.nav-spec ul{display:flex;font-family:var(--font-mono);font-size:14px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase}
+.nav-spec li{display:flex}
+.nav-spec a{display:flex;align-items:center;padding:0 22px;text-decoration:none;border-right:1px solid var(--line);transition:background .3s var(--ease-out-expo),color .3s}
+.nav-spec li:first-child a{border-left:1px solid var(--line)}
+.nav-spec a:hover{background:var(--studio)}
+.nav-spec a[aria-current]{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+.mnav{width:100%;max-width:390px;border:1px solid var(--line);background:#fff}
+.mnav__bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 24px;border-bottom:1px solid var(--line)}
+.burger{position:relative;width:44px;height:44px;display:grid;place-items:center}
+.burger span{position:absolute;width:24px;height:2px;background:var(--ink);transition:transform .3s}
+.burger span:first-child{transform:translateY(-6px)}.burger span:last-child{transform:translateY(6px)}
+.mnav.is-open .burger span:first-child{transform:rotate(45deg)}.mnav.is-open .burger span:last-child{transform:rotate(-45deg)}
+.mnav__menu{padding:8px 24px 32px;clip-path:inset(0 0 100% 0);transition:clip-path .5s var(--ease-out-expo);height:0;overflow:hidden}
+.mnav.is-open .mnav__menu{clip-path:inset(0 0 0 0);height:auto}
+.mnav__menu a{display:flex;min-height:64px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:24px;font-weight:500;letter-spacing:-.04em;text-transform:uppercase;text-decoration:none}
+.mnav__menu a span{font-size:14px;color:var(--faint)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:flex;align-items:center;height:26px;padding:0 10px;border:1px solid var(--line);background:#fff;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;color:var(--body)}
+
+/* card */
+.cards{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line);width:100%}
+@media (min-width:768px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card-cell{display:flex;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.card{position:relative;display:flex;flex-direction:column;width:100%;background:#fff;color:var(--ink);text-decoration:none;outline-offset:-2px}
+.card:hover{z-index:1}
+.card__outline{position:absolute;inset:-1px;z-index:1;border:1px solid var(--brand);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover .card__outline,.card:focus-visible .card__outline{opacity:1}
+.card__thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--studio);border-bottom:1px solid var(--line)}
+.card__thumb i{position:absolute;inset:0;background:var(--studio) repeating-linear-gradient(45deg,var(--line) 0 1px,transparent 1px 12px);transition:transform .7s var(--ease-out-expo)}
+.card:hover .card__thumb i{transform:scale(1.03)}
+.card__body{display:flex;flex:1;flex-direction:column;gap:12px;padding:20px}
+@media (min-width:768px){.card__body{padding:24px}}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:-.02em;text-transform:uppercase;color:var(--muted)}
+.meta .blue{color:var(--brand)}
+.meta i{display:block;width:4px;height:4px;background:var(--faint)}
+.card__title{font-size:22px;line-height:1.15;font-weight:500;letter-spacing:-.05em;transition:color .3s}
+.card:hover .card__title{color:var(--brand)}
+.card__excerpt{font-size:15px;line-height:1.5;color:var(--body);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card__foot{margin-top:auto;justify-content:space-between;padding-top:14px;border-top:1px dashed var(--line)}
+.card__foot .read{color:var(--ink);transition:color .3s}.card:hover .read{color:var(--brand)}
+
+/* sector tile + pixel icon */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);width:100%}
+@media (min-width:768px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s;background:#fff}
+@media (min-width:768px){.tile{padding:24px}}
+.tile:hover{background:var(--studio)}
+.tile h4{font-size:22px;line-height:1.15;font-weight:500;letter-spacing:-.05em}
+.tile p{font-size:15px;line-height:1.3;color:var(--body);margin-top:8px}
+.px{width:64px;height:64px}
+.px rect{transition:opacity .18s}
+
+/* panel / figure / label */
+.panel{border:1px solid var(--ink);background:#fff;color:var(--ink);width:100%}
+.panel__bar{display:flex;align-items:center;justify-content:space-between;min-height:24px;padding:0 6px;background:var(--ink);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.02em}
+.panel__bar--accent{background:var(--brand)}
+.panel__body{border-top:1px solid var(--ink);padding:12px 12px 12px}
+.row{display:grid;grid-template-columns:minmax(0,7.5rem) 1fr 4.5rem;align-items:center;gap:8px;min-height:32px;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:-.02em}
+.row--ours{margin:0 -12px;padding:0 12px;background:var(--tint);color:var(--brand);font-weight:500}
+.bar{position:relative;height:10px}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--bar);transform-origin:left}
+.row--ours .bar i{background:var(--brand)}
+.val{text-align:right;font-family:var(--font-mono);font-size:12px;font-variant-numeric:tabular-nums}
+.axis{display:grid;grid-template-columns:minmax(0,7.5rem) 1fr 4.5rem;gap:8px;padding-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--muted)}
+.axis div{position:relative;height:16px}.axis span{position:absolute;top:0;transform:translateX(-50%)}.axis span:first-child{transform:none}
+.chart-note{margin-top:8px;font-family:var(--font-mono);font-size:10px;font-weight:500;color:var(--brand)}
+.figure{display:flex;flex-direction:column;border-left:1px solid var(--ink);width:100%;max-width:360px}
+.figure__stage{position:relative;flex:1;padding:48px 16px 32px;background:#fafafa radial-gradient(#d4d4d4 1px,#0000 1.3px) 0 0/6px 6px;min-height:200px;display:flex;align-items:center;justify-content:center}
+.figure__tag{position:absolute;top:0;left:0;z-index:1;background:var(--ink);color:#fff;padding:2px 6px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.02em}
+.figure__cap{padding:16px 0 0 10px}
+.figure__cap b{display:block;font-size:15px;font-weight:500;letter-spacing:-.03em}
+.figure__cap span{display:block;margin-top:4px;font-size:14px;line-height:1.35;letter-spacing:-.02em;color:var(--muted)}
+.kpi{position:relative;overflow:hidden;width:100%;background:var(--brand);color:#fff;padding:20px 16px 24px}
+@media (min-width:768px){.kpi{padding:24px 24px 32px}}
+.kpi::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-on-dark) 1px,transparent 1px),linear-gradient(90deg,var(--grid-on-dark) 1px,transparent 1px);background-size:32px 32px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.kpi>*{position:relative}
+.kpi__title{display:inline-block;border:1px solid rgb(255 255 255/.7);padding:4px 8px}
+.kpi dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+@media (min-width:768px){.kpi dl{gap:24px}}
+.kpi dd .n{display:block;font-size:34px;line-height:.9;font-weight:500;letter-spacing:-.045em}
+@media (min-width:640px){.kpi dd .n{font-size:64px}}
+@media (min-width:1024px){.kpi dd .n{font-size:104px;line-height:.85}}
+.kpi dd .c{display:block;margin-top:6px;font-size:15px;line-height:1.15;font-weight:500;letter-spacing:-.05em}
+@media (min-width:640px){.kpi dd .c{font-size:22px}}
+.kpi__foot{margin-top:16px;text-align:right;font-family:var(--font-mono);font-size:11px;letter-spacing:-.02em;color:rgb(255 255 255/.8)}
+
+/* inputs */
+.field-row{display:grid;gap:20px;width:100%}
+@media (min-width:768px){.field-row{grid-template-columns:repeat(2,1fr)}}
+.f label{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:15px;font-weight:500;letter-spacing:-.02em}
+.f label b{color:var(--brand);font-weight:500}
+.f label small{font-family:var(--font-mono);font-size:11px;color:var(--faint);text-transform:uppercase;font-weight:500}
+.input{display:block;width:100%;height:48px;margin-top:8px;padding:0 14px;background:#fff;border:1px solid rgb(26 26 26/.25);border-radius:0;font:inherit;font-size:16px;letter-spacing:-.02em;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+.input::placeholder{color:rgb(26 26 26/.35)}
+.input:hover{border-color:rgb(26 26 26/.5)}
+.input:focus{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
+.input[aria-invalid="true"]{border-color:var(--error)}
+textarea.input{height:auto;padding:12px 14px;line-height:1.5;resize:vertical}
+.err{margin-top:6px;font-size:13px;letter-spacing:-.01em;color:var(--error)}
+.count{margin-top:6px;text-align:right;font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+
+/* tabs */
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink);border-bottom:0;width:100%;max-width:420px}
+.tabs button{min-height:44px;font-size:15px;letter-spacing:-.02em;background:#fff;transition:background .3s,color .3s}
+.tabs button+button{border-left:1px solid var(--ink)}
+.tabs button:hover{background:var(--studio)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.tabpanel{width:100%;max-width:420px}
+
+/* faq */
+.faq{width:100%;max-width:640px;border-top:1px solid var(--night-mid)}
+.faq details{border-bottom:1px solid var(--night-mid)}
+.faq summary{display:flex;align-items:center;gap:16px;min-height:56px;padding:12px 0;list-style:none;cursor:pointer;font-family:var(--font-mono);font-size:13px;letter-spacing:.03em;transition:color .3s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary>span:first-child{flex:1}
+.faq details[open] summary{color:var(--brand-lift)}
+.faq__icon{display:grid;place-items:center;width:32px;height:32px;flex:none;background:#fff;color:var(--ink);transition:background .3s,color .3s}
+.faq__icon svg{transition:transform .3s}
+.faq details[open] .faq__icon{background:var(--brand);color:#fff}
+.faq details[open] .faq__icon svg{transform:rotate(45deg)}
+.faq p{padding:0 0 20px;max-width:60ch;font-size:17px;line-height:1.25;letter-spacing:-.02em;color:rgb(255 255 255/.85)}
+
+/* dialog */
+.dlg{width:100%;max-width:520px;border:1px solid var(--ink);background:#fff}
+.dlg__head{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 12px 0 32px;border-bottom:1px solid var(--line)}
+.dlg__head .x{width:44px;height:44px;display:grid;place-items:center}
+.dlg__body{padding:24px 32px 32px;display:grid;gap:20px}
+
+/* footer specimen */
+.foot{width:100%;border:1px solid var(--line);display:grid}
+@media (min-width:1024px){.foot{grid-template-columns:1fr 1fr}}
+.foot>div{padding:24px;border-bottom:1px solid var(--line)}
+@media (min-width:1024px){.foot>div{padding:40px;border-bottom:0;border-right:1px solid var(--line)}.foot>div:last-child{border-right:0}}
+.foot .tag{font-size:20px;line-height:1.25;font-weight:500;letter-spacing:-.05em;max-width:20ch}
+@media (min-width:768px){.foot .tag{font-size:30px;line-height:1.2}}
+.foot .tag::before{content:"/ ";color:var(--brand);font-family:var(--font-mono)}
+.foot h5{font-size:15px;font-weight:600;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:8px}
+.foot a{display:flex;min-height:44px;align-items:center;gap:12px;font-size:17px;letter-spacing:-.03em;color:var(--body);text-decoration:none;transition:color .3s}
+.foot a:hover{color:var(--brand)}
+.foot a i{flex:1;border-top:1px dashed var(--slash);transition:border-color .3s}
+.foot a:hover i{border-color:var(--ghost)}
+.foot a em{font-style:normal;display:inline-block;transition:transform .3s}
+.foot a:hover em{transform:translate(2px,-2px)}
+
+/* ───────────────────────────── Motion ───────────────────────────── */
+.motion{display:grid;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+@media (min-width:768px){.motion{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.motion{grid-template-columns:repeat(3,1fr)}}
+.motion>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:16px;min-height:260px;background:#fff}
+.motion h3{font-size:22px;line-height:1.15;font-weight:500;letter-spacing:-.05em;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.motion p{font-size:14px;line-height:1.4;color:var(--body)}
+.motion code{display:block;font-size:11px;line-height:1.6;color:var(--body)}
+.replay{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.02em;border:1px solid var(--line);padding:4px 8px;transition:background .3s,border-color .3s,color .3s}
+.replay:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:96px;border:1px dashed var(--line);padding:16px;overflow:hidden;position:relative}
+.ease-curve{width:100%;height:96px}
+.fade-target{opacity:0;transform:translateY(24px)}
+.fade-target.go{animation:fadeUp 1.1s var(--ease-out-expo) forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+.split{font-size:36px;line-height:.95;font-weight:500;letter-spacing:-.045em;text-transform:capitalize;text-align:center}
+.split .line{display:block;overflow:clip;padding-bottom:.08em;margin-bottom:-.08em}
+.split .line span{display:block;transform:translateY(110%)}
+.split.go .line span{animation:rise 1.2s var(--ease-out-expo) forwards}
+.split.go .line:nth-child(2) span{animation-delay:.09s}.split.go .line:nth-child(3) span{animation-delay:.18s}
+@keyframes rise{to{transform:none}}
+.counter{font-size:64px;line-height:.85;font-weight:500;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.grow .bar i{transform:scaleX(0)}
+.grow.go .bar i{animation:growX 1.4s cubic-bezier(.215,.61,.355,1) forwards}
+.grow.go .row:nth-child(2) .bar i{animation-delay:.08s}.grow.go .row:nth-child(3) .bar i{animation-delay:.16s}
+@keyframes growX{to{transform:none}}
+.dlg-demo{width:220px;height:120px;border:1px solid var(--ink);background:#fff;display:grid;place-items:center;font-family:var(--font-mono);font-size:12px;opacity:0}
+.dlg-demo.go{animation:popIn .32s var(--ease-dialog) forwards}
+@keyframes popIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.ring{width:160px;height:120px;perspective:600px}
+.ring__in{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:spin 36s linear infinite}
+.ring__in i{position:absolute;left:50%;top:50%;width:36px;height:48px;margin:-24px 0 0 -18px;border:1px solid var(--ink);background:#fff;transform:rotateY(var(--a)) translateZ(60px)}
+@keyframes spin{to{transform:rotateY(360deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.fade-target,.split .line span{opacity:1;transform:none}}
+
+/* ───────────────────────────── Do / Don't ───────────────────────────── */
+.dd{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+@media (min-width:768px){.dd{grid-template-columns:repeat(2,1fr)}}
+.dd>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px;background:#fff}
+.dd h3{font-family:var(--font-mono);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.dd h3 i{width:8px;height:8px;background:var(--brand)}
+.dd h3.no i{background:var(--error)}
+.dd li{position:relative;padding:10px 0 10px 22px;font-size:15px;line-height:1.4;color:var(--body);border-bottom:1px dashed var(--line)}
+.dd li::before{content:"";position:absolute;left:4px;top:18px;width:6px;height:6px;background:var(--brand)}
+.dd .no li::before{background:var(--error)}
+.dd li b{color:var(--ink);font-weight:600}
+
+/* page footer */
+.pagefoot{padding:40px var(--gutter);border-top:1px solid var(--line);font-family:var(--font-mono);font-size:12px;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+.pagefoot a{text-decoration:none}.pagefoot a:hover{color:var(--brand)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__in">
+    <a href="#top" class="topbar__logo" aria-label="Skyfall AI design system">
+      <svg viewBox="0 0 258 32" width="110" height="13.6" fill="currentColor" aria-hidden="true"><use href="#skyfall-logo"/></svg>
+      <span>Design System</span>
+    </a>
+    <ul class="topbar__tabs">
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#typography">Type</a></li>
+      <li><a href="#layout">Layout</a></li>
+      <li><a href="#depth">Depth</a></li>
+      <li><a href="#shapes">Shapes</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#motion">Motion</a></li>
+      <li><a href="#rules">Rules</a></li>
+    </ul>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="skyfall-logo" viewBox="0 0 258 32">
+    <path d="M37.1894 11.2425C37.0781 11.6877 36.6781 12 36.2192 12H20.5308C20.0719 12 19.6719 12.3123 19.5606 12.7575L18.1894 18.2425C18.0781 18.6877 17.6781 19 17.2192 19H1.28078C0.630206 19 0.152847 18.3886 0.310634 17.7575L1.81063 11.7575C1.92193 11.3123 2.32191 11 2.78078 11H18.4692C18.9281 11 19.3281 10.6877 19.4394 10.2425L20.8106 4.75746C20.9219 4.3123 21.3219 4 21.7808 4H37.7192C38.3698 4 38.8472 4.61139 38.6894 5.24254L37.1894 11.2425Z"/>
+    <path d="M36.9091 21.2425C36.7978 21.6877 36.3978 22 35.9389 22H20.2505C19.7916 22 19.3917 22.3123 19.2804 22.7575L17.9091 28.2425C17.7978 28.6877 17.3978 29 16.9389 29H1.0005C0.349933 29 -0.127426 28.3886 0.0303605 27.7575L1.53036 21.7575C1.64165 21.3123 2.04164 21 2.5005 21H18.1889C18.6478 21 19.0478 20.6877 19.1591 20.2425L20.5304 14.7575C20.6417 14.3123 21.0416 14 21.5005 14H37.4389C38.0895 14 38.5669 14.6114 38.4091 15.2425L36.9091 21.2425Z"/>
+    <path d="M65.0157 25.24C63.8637 25.24 62.8717 25.048 62.0397 24.664C61.2237 24.28 60.5917 23.728 60.1437 23.008C59.6957 22.288 59.4637 21.432 59.4477 20.44H61.6077C61.6077 21.32 61.9037 22.016 62.4957 22.528C63.1037 23.04 63.9437 23.296 65.0157 23.296C66.0237 23.296 66.8077 23.048 67.3677 22.552C67.9437 22.056 68.2317 21.368 68.2317 20.488C68.2317 19.784 68.0397 19.168 67.6557 18.64C67.2877 18.112 66.7517 17.744 66.0477 17.536L63.6717 16.792C62.4717 16.424 61.5437 15.808 60.8877 14.944C60.2477 14.08 59.9277 13.064 59.9277 11.896C59.9277 10.952 60.1357 10.136 60.5517 9.448C60.9837 8.744 61.5837 8.2 62.3517 7.816C63.1197 7.416 64.0237 7.216 65.0637 7.216C66.5997 7.216 67.8317 7.648 68.7597 8.512C69.6877 9.36 70.1597 10.496 70.1757 11.92H68.0157C68.0157 11.056 67.7517 10.384 67.2237 9.904C66.7117 9.408 65.9837 9.16 65.0397 9.16C64.1117 9.16 63.3837 9.384 62.8557 9.832C62.3437 10.28 62.0877 10.904 62.0877 11.704C62.0877 12.424 62.2797 13.048 62.6637 13.576C63.0477 14.104 63.5997 14.48 64.3197 14.704L66.7197 15.472C67.8877 15.84 68.7917 16.464 69.4317 17.344C70.0717 18.224 70.3917 19.256 70.3917 20.44C70.3917 21.4 70.1677 22.24 69.7197 22.96C69.2717 23.68 68.6397 24.24 67.8237 24.64C67.0237 25.04 66.0877 25.24 65.0157 25.24ZM81.9984 25V7.48H84.1584V14.992H86.7504L90.6384 7.48H92.9904L88.6464 15.904L93.2304 25H90.7584L86.6784 16.888H84.1584V25H81.9984ZM107.981 25V18.448L102.701 7.48H104.933L108.413 14.68C108.605 15.08 108.757 15.424 108.869 15.712C108.981 15.984 109.053 16.184 109.085 16.312C109.117 16.184 109.189 15.984 109.301 15.712C109.429 15.424 109.589 15.08 109.781 14.68L113.189 7.48H115.421L110.141 18.448V25H107.981ZM126.212 25V7.456H136.532V9.424H128.324V15.256H135.908V17.224H128.372V25H126.212ZM147.202 25L151.762 7.48H154.666L159.202 25H157.018L155.866 20.344H150.562L149.41 25H147.202ZM150.994 18.52H155.41L154.066 13.12C153.81 12.096 153.61 11.24 153.466 10.552C153.322 9.864 153.234 9.416 153.202 9.208C153.17 9.416 153.082 9.864 152.938 10.552C152.794 11.24 152.594 12.088 152.338 13.096L150.994 18.52ZM170.833 25V7.48H172.993V23.032H180.913V25H170.833ZM192.903 25V7.48H195.063V23.032H202.983V25H192.903Z"/>
+    <path d="M221.92 25L226.48 7.48H229.384L233.92 25H231.736L230.584 20.344H225.28L224.128 25H221.92ZM225.712 18.52H230.128L228.784 13.12C228.528 12.096 228.328 11.24 228.184 10.552C228.04 9.864 227.952 9.416 227.92 9.208C227.888 9.416 227.8 9.864 227.656 10.552C227.512 11.24 227.312 12.088 227.056 13.096L225.712 18.52ZM245.31 25V23.032H248.886V9.448H245.31V7.48H254.67V9.448H251.094V23.032H254.67V25H245.31Z"/>
+  </symbol>
+</svg>
+
+<main id="top">
+
+<!-- ═══════════════════════════ HERO / OVERVIEW ═══════════════════════════ -->
+<section class="section" style="padding-top:112px">
+  <div class="field--halftone" aria-hidden="true" style="position:absolute;inset:0;border:0;height:auto;pointer-events:none;-webkit-mask-image:linear-gradient(#000 20%,transparent 85%);mask-image:linear-gradient(#000 20%,transparent 85%)"><canvas id="hero-halftone"></canvas></div>
+  <div class="container" style="position:relative">
+    <div class="frame"><i></i>
+      <p class="mono slash" style="color:var(--brand)">Design System · v1 · extracted from skyfall.ai</p>
+      <h1 class="h-display" style="max-width:13ch;margin-top:20px">The Blueprint Datasheet</h1>
+      <p class="lede" style="margin-top:32px;max-width:52ch">Skyfall's interface reads like an engineering drawing typeset for the screen: flat paper, 1px hairlines, mono annotations, enormous medium-weight headlines, and a single blue that carries every signal.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:32px;align-items:center">
+        <a class="btn btn--primary" href="../../DESIGN.md"><span class="btn__panel"></span><span class="btn__sq"></span><span class="btn__label" data-scramble>Read DESIGN.md</span></a>
+        <a class="btn btn--line" href="#components"><span data-scramble>Jump to components</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <ul class="cells cells--4" style="margin-top:48px">
+      <li><span class="cell-label mono">01 / Palette</span><p class="t-body">One accent on an achromatic ramp. Blue lifts to <code>#6f83f0</code> on dark grounds.</p></li>
+      <li><span class="cell-label mono">02 / Geometry</span><p class="t-body">Zero radius. Squares, brackets, hairlines and dotted fields are the only decoration.</p></li>
+      <li><span class="cell-label mono">03 / Type</span><p class="t-body">Geist at weight 500 for reading; Geist Mono, small and uppercase, for every annotation.</p></li>
+      <li><span class="cell-label mono">04 / Motion</span><p class="t-body">Scroll-gated, masked, expo-eased. Nothing bounces; reduced motion disables it all.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COLORS ═══════════════════════════ -->
+<section class="section section--studio" id="colors">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Colors</h2><p class="note mono-sm">Click any swatch to copy its hex</p></div>
+    <p class="lede" style="margin-top:24px">An achromatic grey ramp from paper to ink with a single electric blue. The blue is loud precisely because it is rare.</p>
+
+    <div class="grid-header"><h3 class="h-grid">Primary</h3><span class="mono" style="color:var(--muted)">05 / The one blue</span></div>
+    <ul class="cells cells--5" id="sw-primary"></ul>
+
+    <div class="grid-header"><h3 class="h-grid">Neutral</h3><span class="mono" style="color:var(--muted)">12 / Paper to ink</span></div>
+    <ul class="cells cells--4" id="sw-neutral"></ul>
+
+    <div class="grid-header"><h3 class="h-grid">Dark grounds</h3><span class="mono" style="color:var(--muted)">03 / Night</span></div>
+    <ul class="cells cells--3" id="sw-night"></ul>
+
+    <div class="grid-header"><h3 class="h-grid">Pixel tones</h3><span class="mono" style="color:var(--muted)">07 / Icons only</span></div>
+    <ul class="cells cells--4" id="sw-pixel"></ul>
+
+    <div class="cells cells--3" style="margin-top:48px">
+      <div><span class="cell-label mono" style="color:var(--brand)">The One Blue Rule</span><p class="t-body-sm">Skyfall Blue is the only saturated colour in the UI. If a second accent seems necessary, the answer is a hairline, a mono label or more white space.</p></div>
+      <div><span class="cell-label mono" style="color:var(--brand)">The Lift Rule</span><p class="t-body-sm">On ink or night grounds, blue text and hover states use Blue Lift <code>#6f83f0</code>, never the base blue, which fails contrast on <code>#1a1a1a</code>.</p></div>
+      <div><span class="cell-label mono" style="color:var(--brand)">The Tone Quarantine Rule</span><p class="t-body-sm">Pixel tones live only inside pixel icons. They never appear in type, buttons or backgrounds.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TYPOGRAPHY ═══════════════════════════ -->
+<section class="section" id="typography">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Typography</h2></div>
+    <p class="lede" style="margin-top:24px">Geist does the reading at medium weight with tight negative tracking, and Geist Mono does the annotating. Weight stays in the 400–600 band.</p>
+
+    <div class="grid-header"><h3 class="h-grid">Families</h3><span class="mono" style="color:var(--muted)">02 / Variable 100–900</span></div>
+    <div class="cells cells--2">
+      <div><span class="cell-label mono">Geist · display and body</span><p style="font-size:40px;line-height:1;letter-spacing:-.045em;font-weight:500">Aa Bb Cc 0123</p><p class="cell-value" style="margin-top:12px">"Geist", ui-sans-serif, system-ui, sans-serif</p></div>
+      <div><span class="cell-label mono">Geist Mono · labels, buttons, meta</span><p style="font-family:var(--font-mono);font-size:40px;line-height:1;letter-spacing:-.02em;font-weight:500">Aa Bb Cc 0123</p><p class="cell-value" style="margin-top:12px">"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace</p></div>
+    </div>
+
+    <div class="grid-header"><h3 class="h-grid">Hierarchy</h3><span class="mono" style="color:var(--muted)">11 / Roles</span></div>
+    <div>
+      <div class="spec"><div class="spec__name"><span class="mono">Display</span><small>Page heroes · max 13ch</small></div><div class="spec__sample"><p class="t-display">Autonomous Business for the Post-Monolithic Era</p></div><div class="spec__values"><b>Geist 500</b><br>46 → 84 → 128/136px<br>line-height 0.92 → 0.86<br>tracking -0.045em · capitalize</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Headline</span><small>Section titles in a Frame</small></div><div class="spec__sample"><p class="t-headline">A new Pareto frontier</p></div><div class="spec__values"><b>Geist 500</b><br>40 → 64 → 96px<br>line-height 0.95 → 0.9<br>tracking -0.045em · capitalize</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Headline md</span><small>Secondary sections</small></div><div class="spec__sample"><p class="t-headline-md">Frequently asked questions</p></div><div class="spec__values"><b>Geist 500</b><br>34 → 48 → 64px<br>line-height 0.98 → 0.94<br>tracking -0.045em</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">KPI</span><small>Counted numbers on blue</small></div><div class="spec__sample"><p class="t-kpi">119×</p></div><div class="spec__values"><b>Geist 500</b><br>34 → 64 → 104px<br>line-height 0.9 → 0.85<br>tracking -0.045em</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Title</span><small>Cards, tiles, posts</small></div><div class="spec__sample"><p class="t-title">Simulate cause and effect across the enterprise</p></div><div class="spec__values"><b>Geist 500</b><br>22 → 26px<br>line-height 1.15<br>tracking -0.05em</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Body</span><small>Ledes, tile copy, answers</small></div><div class="spec__sample"><p class="t-body">We're enabling the future where an entire business can operate autonomously. Engineering design isn't a language problem; it is a sequential decision problem.</p></div><div class="spec__values"><b>Geist 400</b><br>17 → 19px<br>line-height 1.25<br>tracking -0.02em · 38–60ch</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Body sm</span><small>Excerpts, captions</small></div><div class="spec__sample"><p class="t-body-sm">Enterprise AI is moving from static tools to autonomous agents that must keep performing as conditions change.</p></div><div class="spec__values"><b>Geist 400</b><br>15 → 16px<br>line-height 1.3<br>tracking -0.02em</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Prose</span><small>Blog articles</small></div><div class="spec__sample"><p class="t-prose">The last decade of AI has been defined by language models that can reason, write code and solve increasingly complex problems. Engineering in the physical world is still hard for them.</p></div><div class="spec__values"><b>Geist 400</b> · colour Body<br>17 → 18px · line-height 1.65<br>tracking -0.01em · 65ch<br>H2 30→34 · H3 24→28 · H4 20</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Label</span><small>Eyebrows, tabs, meta, bars</small></div><div class="spec__sample"><p class="t-label"><span class="slash">Research</span> &nbsp;·&nbsp; Mar 18, 2026 &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; &lt;SKY-001&gt;</p></div><div class="spec__values"><b>Geist Mono 500</b><br>12 → 13px<br>tracking -0.02em<br>UPPERCASE · often “/ ” prefixed</div></div>
+      <div class="spec"><div class="spec__name"><span class="mono">Label sm</span><small>LabelBlock captions, notes</small></div><div class="spec__sample"><p class="t-label-sm">Defining Moment In History</p></div><div class="spec__values"><b>Geist Mono 500</b><br>11px<br>tracking +0.05em<br>Capitalised (chips: uppercase)</div></div>
+      <div class="spec" style="border-bottom:0"><div class="spec__name"><span class="mono">Button</span><small>Primary, line, read more</small></div><div class="spec__sample"><p class="t-button">Meet SKY-001 &nbsp;&nbsp; Watch the launch ↗</p></div><div class="spec__values"><b>Geist Mono 600</b><br>15px<br>tracking -0.02em<br>UPPERCASE</div></div>
+    </div>
+
+    <div class="grid-header"><h3 class="h-grid">Weights</h3><span class="mono" style="color:var(--muted)">The Medium Rule</span></div>
+    <div class="weights">
+      <span class="off" style="font-weight:300">Light<small>300 · not used</small></span>
+      <span style="font-weight:400">Regular<small>400 · body, prose, labels</small></span>
+      <span style="font-weight:500">Medium<small>500 · all headlines, titles, mono labels</small></span>
+      <span style="font-weight:600">Semibold<small>600 · buttons, current tab, prose strong</small></span>
+      <span class="off" style="font-weight:700">Bold<small>700 · not used</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ LAYOUT ═══════════════════════════ -->
+<section class="section section--studio" id="layout">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Layout</h2></div>
+    <p class="lede" style="margin-top:24px">A single centred column, hairline grids built from shared borders, and sections that switch ground instead of stacking cards.</p>
+
+    <div class="grid-header"><h3 class="h-grid">Container &amp; gutters</h3><span class="mono" style="color:var(--muted)">1208px · 24/40px</span></div>
+    <div class="ruler" style="--w:var(--gutter)">max-width 1208px · gutter 24px → 40px at md</div>
+
+    <div class="grid-header"><h3 class="h-grid">Breakpoints</h3><span class="mono" style="color:var(--muted)">Tailwind defaults</span></div>
+    <div class="bp">
+      <div><b>base</b><small>&lt;640 · 1 col · 24px gutter · mobile 64px header</small></div>
+      <div><b>sm 640</b><small>Display 84px · headline 64px</small></div>
+      <div><b>md 768</b><small>2 cols · 40px gutter · section 96px</small></div>
+      <div><b>lg 1024</b><small>3–5 cols · fixed 56px nav · section 112px · pinned build steps</small></div>
+    </div>
+
+    <div class="grid-header"><h3 class="h-grid">Spacing scale</h3><span class="mono" style="color:var(--muted)">4px base</span></div>
+    <div class="spacing">
+      <div><i style="--s:4px"></i>4</div><div><i style="--s:8px"></i>8</div><div><i style="--s:12px"></i>12</div><div><i style="--s:16px"></i>16</div><div><i style="--s:20px"></i>20</div><div><i style="--s:24px"></i>24</div><div><i style="--s:32px"></i>32</div><div><i style="--s:40px"></i>40</div><div><i style="--s:48px"></i>48</div><div><i style="--s:56px"></i>56</div><div><i style="--s:64px"></i>64</div><div><i style="--s:80px"></i>80</div><div><i style="--s:96px"></i>96</div><div><i style="--s:112px"></i>112</div>
+    </div>
+    <ul class="cells cells--4" style="margin-top:24px">
+      <li><span class="cell-label mono">Section padding</span><p class="cell-value">64 / 96 / 112px<br>base / md / lg</p></li>
+      <li><span class="cell-label mono">Cell padding</span><p class="cell-value">20 → 24px<br>40px for footer and featured cells</p></li>
+      <li><span class="cell-label mono">Chrome</span><p class="cell-value">Desktop nav 56px fixed<br>Mobile header 64px sticky<br>Hash offset 72px</p></li>
+      <li><span class="cell-label mono">Touch</span><p class="cell-value">min 44px targets<br>focus ring 2px blue, 2px offset</p></li>
+    </ul>
+
+    <div class="grid-header"><h3 class="h-grid">The hairline grid</h3><span class="mono" style="color:var(--muted)">Shared borders</span></div>
+    <p class="t-body-sm" style="margin-bottom:16px">The list carries <code>border-top</code> and <code>border-left</code>; each cell carries <code>border-right</code> and <code>border-bottom</code>. Adjacent cells share one line and never double up. Grids collapse 3 → 2 → 1 (cards) or 5 → 2 (tiles).</p>
+    <ul class="cells cells--5">
+      <li><span class="cell-label mono">ul</span><p class="cell-value">border-t border-l</p></li>
+      <li><span class="cell-label mono">li</span><p class="cell-value">border-r border-b</p></li>
+      <li><span class="cell-label mono">li</span><p class="cell-value">border-r border-b</p></li>
+      <li><span class="cell-label mono">li</span><p class="cell-value">border-r border-b</p></li>
+      <li><span class="cell-label mono">li</span><p class="cell-value">border-r border-b</p></li>
+    </ul>
+
+    <div class="grid-header"><h3 class="h-grid">Grounds</h3><span class="mono" style="color:var(--muted)">05 / Section backgrounds</span></div>
+    <div class="fields" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+      <div class="field" style="background:var(--paper)"><span class="mono-sm">paper</span><span class="cell-value">#fff · default</span></div>
+      <div class="field" style="background:var(--studio)"><span class="mono-sm">studio</span><span class="cell-value">#f6f6f6 · alternate</span></div>
+      <div class="field grid-dark" style="color:#fff"><span class="mono-sm" style="background:#fff;color:var(--ink)">night</span><span class="cell-value" style="color:var(--night-text)">#1a1a1a + 44px grid</span></div>
+      <div class="field" style="background:var(--night);color:#fff"><span class="mono-sm" style="background:#fff;color:var(--ink)">ink</span><span class="cell-value" style="color:var(--night-text)">#1a1a1a · FAQ</span></div>
+      <div class="field" style="background:var(--brand);color:#fff"><span class="mono-sm" style="background:#fff;color:var(--ink)">blue</span><span class="cell-value" style="color:rgb(255 255 255/.8)">#3e57da · KPI, Results</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ELEVATION & DEPTH ═══════════════════════════ -->
+<section class="section" id="depth">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Elevation &amp; depth</h2></div>
+    <p class="lede" style="margin-top:24px">The system is flat. No component casts a shadow at rest, on hover or in focus. Depth is drawn with rules and fields, the way a drawing annotates a part.</p>
+
+    <div class="grid-header"><h3 class="h-grid">Fields</h3><span class="mono" style="color:var(--muted)">05 / Backgrounds behind figures</span></div>
+    <div class="fields">
+      <div class="field dots"><span class="mono-sm">dots</span><span class="cell-value">#d4d4d4 1px · 12px pitch on studio</span></div>
+      <div class="field dots-grey"><span class="mono-sm">dots-grey</span><span class="cell-value">#d4d4d4 1px · 6px pitch on #fafafa</span></div>
+      <div class="field field--grid"><span class="mono-sm">grid</span><span class="cell-value" style="position:relative">#3e57da1a · 32px · radial mask</span></div>
+      <div class="field grid-dark" style="color:#fff"><span class="mono-sm" style="background:#fff;color:var(--ink)">grid-dark</span><span class="cell-value" style="color:var(--night-text)">#ffffff1a · 44px on night</span></div>
+    </div>
+    <div class="fields" style="margin-top:12px;grid-template-columns:1fr">
+      <div class="field field--halftone" style="height:240px"><canvas data-halftone></canvas><span class="mono-sm">halftone</span><span class="cell-value" style="position:relative">WebGL cell shader behind heroes, fading down · dot grid fallback · lazy pop-in ~335ms after mount</span></div>
+    </div>
+
+    <div class="grid-header"><h3 class="h-grid">The single exception</h3><span class="mono" style="color:var(--muted)">Dialog backdrop</span></div>
+    <div class="cells cells--2">
+      <div style="background:var(--studio);position:relative;min-height:220px;overflow:hidden;padding:0">
+        <div style="position:absolute;inset:0;background:rgb(26 26 26/.4);backdrop-filter:blur(2px);display:grid;place-items:center">
+          <div class="dlg" style="max-width:300px"><div class="dlg__head" style="height:48px;padding-left:16px"><span class="mono">Join the waitlist</span><span class="x" aria-hidden="true">✕</span></div><div class="dlg__body" style="padding:16px"><span class="t-body-sm">Hairline-bordered rectangle; no shadow.</span></div></div>
+        </div>
+      </div>
+      <div><span class="cell-label mono" style="color:var(--brand)">The No-Shadow Rule</span><p class="t-body-sm">Never add <code>box-shadow</code>. If something needs lifting, give it a 1px ink border, a title bar, or a field behind it. The only soft effect on the site is <code>backdrop: rgb(26 26 26 / .4)</code> with a 2px blur behind native dialogs.</p><p class="t-body-sm" style="margin-top:12px"><b style="font-weight:600;color:var(--ink)">The Draw-It Rule.</b> Depth is implied by brackets, dots and rules.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SHAPES ═══════════════════════════ -->
+<section class="section section--studio" id="shapes">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Shapes</h2></div>
+    <p class="lede" style="margin-top:24px">Every corner is square. The recurring primitives are small filled squares, L-brackets, rules and typographic marks.</p>
+    <div class="shapes" style="margin-top:40px">
+      <div><span class="sq" style="width:8px;height:8px"></span><span class="mono-sm">8px square · button, eyebrow</span></div>
+      <div><span class="sq" style="width:6px;height:6px"></span><span class="mono-sm">6px square · corner dots, bullets</span></div>
+      <div><span class="sq" style="width:4px;height:4px;background:var(--faint)"></span><span class="mono-sm">4px square · meta separator</span></div>
+      <div><span class="mini-frame"><i></i></span><span class="mono-sm">8px corner brackets · Frame</span></div>
+      <div><span class="corner-dots"><i></i><i></i><i></i><i></i></span><span class="mono-sm">Corner dots · figures, video</span></div>
+      <div><span style="display:block;height:48px;border-left:1px solid var(--ink);padding-left:10px;font-size:15px">Left rule</span><span class="mono-sm">1px left rule · LabelBlock, Figure</span></div>
+      <div><span class="mono" style="font-size:20px">&lt;SKY-001&gt;</span><span class="mono-sm">Angle brackets · current tab</span></div>
+      <div><span class="mono" style="font-size:20px"><span style="color:var(--brand)">/</span> Label</span><span class="mono-sm">Slash prefix · eyebrows, tagline</span></div>
+      <div><span class="mono" style="font-size:20px">↗ &nbsp;→</span><span class="mono-sm">Arrows · links end with them</span></div>
+      <div><span style="display:block;width:96px;height:48px;border:1px dashed var(--slash)"></span><span class="mono-sm">Dashed rule · footer, card foot</span></div>
+      <div><svg class="px" viewBox="0 0 80 80" data-pixel="plan" data-tone="#CA8F73" style="width:48px;height:48px"></svg><span class="mono-sm">Pixel icon · 10×10 on 8px pitch</span></div>
+      <div><span style="display:block;width:96px;height:48px;background:var(--studio);border:1px solid var(--line);overflow:hidden"><i style="display:block;width:100%;height:100%;background:repeating-linear-gradient(45deg,var(--line) 0 1px,transparent 1px 12px);transform:scale(1.03)"></i></span><span class="mono-sm">Images · clipped, 1.03 zoom only</span></div>
+    </div>
+    <ul class="cells cells--3" style="margin-top:24px">
+      <li><span class="cell-label mono">Radius</span><p class="cell-value">0px on buttons, inputs, cards, chips, panels, dialogs, images, video</p></li>
+      <li><span class="cell-label mono">Borders</span><p class="cell-value">1px line #e0e0e0 · 1px ink #1a1a1a for emphasis · 1px night-mid #474747 on dark</p></li>
+      <li><span class="cell-label mono">Transforms</span><p class="cell-value">translate for panels and arrows · rotate for squares and plus icons · scale 1.03 for images, 0.98 for pressed buttons</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COMPONENTS ═══════════════════════════ -->
+<section class="section" id="components">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Components</h2></div>
+    <p class="lede" style="margin-top:24px">Parts on a datasheet: hairline-boxed, square, labelled in mono, with a single blue state. Hover, focus and open states are live below.</p>
+
+    <!-- Buttons -->
+    <div class="grid-header"><h3 class="h-grid">Buttons</h3><span class="mono" style="color:var(--muted)">Primary · Line · Submit</span></div>
+    <div class="demo">
+      <div class="demo__stage">
+        <a class="btn btn--primary" href="#"><span class="btn__panel"></span><span class="btn__sq"></span><span class="btn__label" data-scramble>Meet SKY-001</span></a>
+        <a class="btn btn--line" href="#"><span data-scramble>Watch the launch</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="demo__spec"><h3>Primary (dark) + Line (light)</h3><p>Ink block, mono 15/600 uppercase, label left and an 8px white square right. On hover a Skyfall Blue panel slides in from the left and the square rotates −180°. Line buttons underline the label and nudge the arrow up-right.</p>
+        <dl><dt>Height</dt><dd>52px · min-width 220px (primary)</dd><dt>Padding</dt><dd>0 20px (primary) · 0 4px (line)</dd><dt>Hover</dt><dd>panel 300ms expo-out · colour 300ms</dd><dt>Active</dt><dd>scale 0.98</dd><dt>Focus</dt><dd>2px blue outline, 2px offset</dd><dt>Label</dt><dd>scrambles on pointer enter (0.6s)</dd></dl></div>
+      <div class="demo__stage demo__stage--ink">
+        <a class="btn btn--primary btn--light" href="#"><span class="btn__panel"></span><span class="btn__sq"></span><span class="btn__label" data-scramble>Join the waitlist</span></a>
+        <a class="btn btn--line btn--dark" href="#"><span data-scramble>Read the report</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="demo__spec"><h3>Primary (light) + Line (dark)</h3><p>On ink, night and blue grounds the primary button inverts to paper with an ink label; hover still brings the blue panel and turns text and square white. Dark line buttons use white, lifting to <code>#6f83f0</code> on hover.</p>
+        <dl><dt>Light fill</dt><dd>#fff · text #1a1a1a</dd><dt>Dark hover</dt><dd>Blue Lift #6f83f0 (The Lift Rule)</dd><dt>Focus on dark</dt><dd>white outline</dd></dl></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="grid-header"><h3 class="h-grid">Navigation</h3><span class="mono" style="color:var(--muted)">Desktop 56px · Mobile 64px</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--studio demo__stage--block">
+        <nav class="nav-spec" aria-label="Navigation specimen">
+          <a class="nav-spec__logo" href="#" aria-label="Skyfall AI home"><svg viewBox="0 0 258 32" width="132" height="16.4" fill="currentColor"><use href="#skyfall-logo"/></svg></a>
+          <ul><li><a href="#" aria-current="location" data-scramble>&lt;SKY-001&gt;</a></li><li><a href="#" data-scramble>Blog</a></li></ul>
+        </nav>
+      </div>
+      <div class="demo__spec"><h3>Desktop bar</h3><p>Fixed, white, bottom hairline. Logo at 132px. Tabs are mono 14/500 uppercase with 22px padding and hairlines between; hover fills Studio; the current tab fills blue with 600 white text and its label wrapped in angle brackets. A scroll spy marks the section under 40% viewport height.</p>
+        <dl><dt>Height</dt><dd>56px</dd><dt>Tab padding</dt><dd>0 22px</dd><dt>Transition</dt><dd>background 300ms expo-out</dd></dl></div>
+      <div class="demo__stage demo__stage--studio">
+        <div class="mnav" id="mnav">
+          <div class="mnav__bar"><svg viewBox="0 0 258 32" width="140" height="17.4" fill="currentColor"><use href="#skyfall-logo"/></svg><button class="burger" aria-label="Toggle menu" aria-expanded="false" onclick="var m=document.getElementById('mnav');var o=m.classList.toggle('is-open');this.setAttribute('aria-expanded',o)"><span></span><span></span></button></div>
+          <div class="mnav__menu"><a href="#">SKY-001<span>01</span></a><a href="#">Blog<span>02</span></a></div>
+        </div>
+      </div>
+      <div class="demo__spec"><h3>Mobile header + menu</h3><p>Sticky 64px header; the hamburger is two 24 × 2px ink bars that rotate into an X. The menu is a full-height white sheet that wipes down with <code>clip-path</code>. Links are mono 24px uppercase on 64px rows, indexed <code>01</code>, <code>02</code> in Faint.</p>
+        <dl><dt>Wipe</dt><dd>clip-path inset · 500ms expo-out</dd><dt>Rows</dt><dd>min 64px · hairline</dd><dt>Tap the burger</dt><dd>to open and close</dd></dl></div>
+    </div>
+
+    <!-- Chips & meta -->
+    <div class="grid-header"><h3 class="h-grid">Chips &amp; meta</h3><span class="mono" style="color:var(--muted)">Static tags</span></div>
+    <div class="demo">
+      <div class="demo__stage" style="flex-direction:column;align-items:flex-start;gap:20px">
+        <ul class="chips"><li class="chip">World models</li><li class="chip">Planning</li><li class="chip">Continual learning</li><li class="chip">Research</li></ul>
+        <p class="meta"><span class="blue">Mar 18, 2026</span><i></i><span>Skyfall Research</span><i></i><span>6 min read</span></p>
+        <p class="mono" style="display:flex;align-items:center;gap:10px"><span class="sq" style="width:8px;height:8px;background:var(--brand)"></span>Featured · Latest</p>
+        <p class="mono slash" style="color:var(--brand)">Blog &amp; Articles</p>
+      </div>
+      <div class="demo__spec"><h3>Chip · Meta row · Eyebrow</h3><p>Chips are 26px hairline boxes with mono 11px uppercase text in Body; there is no selected state. Meta rows are mono 12/500 uppercase in Muted with 4px Faint squares between items and the date or read time in blue. Eyebrows carry an 8px blue square or a blue slash.</p>
+        <dl><dt>Chip</dt><dd>h 26 · px 10 · border line</dd><dt>Meta gap</dt><dd>14px · dot 4px #adadad</dd></dl></div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid-header"><h3 class="h-grid">Cards</h3><span class="mono" style="color:var(--muted)">Post card · Sector tile</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--studio demo__stage--block" style="padding:24px">
+        <ul class="cards">
+          <li class="card-cell"><a class="card" href="#"><span class="card__outline"></span><span class="card__thumb"><i></i></span><span class="card__body"><span class="meta"><span class="blue">6 min read</span><i></i><span>Skyfall Research</span></span><span class="card__title">LLMs Are Not Continual Learners</span><span class="card__excerpt">Enterprise AI is moving from static tools to autonomous agents that must keep performing as conditions change.</span><ul class="chips"><li class="chip">Morpheus</li><li class="chip">Benchmarks</li></ul><span class="meta card__foot"><span>Mar 18, 2026</span><span class="read">Read →</span></span></span></a></li>
+          <li class="card-cell"><a class="card" href="#"><span class="card__outline"></span><span class="card__thumb"><i></i></span><span class="card__body"><span class="meta"><span class="blue">9 min read</span><i></i><span>Sam Pasupalak</span></span><span class="card__title">Building the Foundations of an AI CEO</span><span class="card__excerpt">An AI CEO addresses the fundamental bottleneck lacking in modern enterprises: cognitive scale.</span><ul class="chips"><li class="chip">Essay</li></ul><span class="meta card__foot"><span>Jan 7, 2026</span><span class="read">Read →</span></span></span></a></li>
+        </ul>
+      </div>
+      <div class="demo__spec"><h3>Post card</h3><p>A cell in a hairline grid: 16:10 image on Studio, 20–24px padding, meta row, 22px title, two-line excerpt, chips and a dashed-rule footer. On hover a 1px blue outline fades in over the cell, the title and arrow turn blue, and the image zooms to 1.03.</p>
+        <dl><dt>Grid</dt><dd>3 → 2 → 1 columns</dd><dt>Hover</dt><dd>outline 300ms · zoom 700ms expo-out</dd><dt>Featured</dt><dd>7:5 split · title 30→42px · border → blue</dd></dl></div>
+      <div class="demo__stage demo__stage--block" style="padding:24px">
+        <ul class="tiles">
+          <li class="tile"><svg class="px" viewBox="0 0 80 80" data-pixel="simulate" data-tone="#6D8C8E"></svg><div><h4>Simulate cause and effect</h4><p>Model the enterprise before acting on it.</p></div></li>
+          <li class="tile"><svg class="px" viewBox="0 0 80 80" data-pixel="plan" data-tone="#CA8F73"></svg><div><h4>Plan across horizons</h4><p>From the next step to the next quarter.</p></div></li>
+          <li class="tile"><svg class="px" viewBox="0 0 80 80" data-pixel="guardrails" data-tone="#A7B89F"></svg><div><h4>Act within guardrails</h4><p>Constraints are part of the model.</p></div></li>
+          <li class="tile"><svg class="px" viewBox="0 0 80 80" data-pixel="learn" data-tone="#97ABC5"></svg><div><h4>Learn continually</h4><p>The world changes; the model follows.</p></div></li>
+        </ul>
+      </div>
+      <div class="demo__spec"><h3>Sector tile + pixel icon</h3><p>Hairline cell with a 10 × 10 pixel glyph above a title and a line of copy. Inactive pixels show the tone's ghost (65% toward white); on hover the cell fills Studio and the pixels pop in at random. Each tile is assigned one of seven pixel tones.</p>
+        <dl><dt>Icon</dt><dd>50 → 64px · 7px squares on 8px pitch</dd><dt>Pop</dt><dd>0.18s each · 0.012s stagger</dd><dt>Touch</dt><dd>always active</dd></dl></div>
+    </div>
+
+    <!-- Panels, figures, label blocks -->
+    <div class="grid-header"><h3 class="h-grid">Panels &amp; figures</h3><span class="mono" style="color:var(--muted)">Panel · Figure · LabelBlock · Frame</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--block">
+        <div class="panel grow" id="chart-demo">
+          <div class="panel__bar"><span>IoU ↑</span><span style="color:rgb(255 255 255/.7)">BIM</span></div>
+          <div class="panel__body">
+            <div class="row row--ours"><span>SKY-001</span><span class="bar"><i style="width:27.2%"></i></span><span class="val" data-count="27.2" data-fmt="%">27.2%</span></div>
+            <div class="row"><span>GPT-6 Astra</span><span class="bar"><i style="width:20.4%"></i></span><span class="val" data-count="20.4" data-fmt="%">20.4%</span></div>
+            <div class="row"><span>Claude Opus 5.5</span><span class="bar"><i style="width:12.1%"></i></span><span class="val" data-count="12.1" data-fmt="%">12.1%</span></div>
+            <div class="row"><span>Gemini 3.8 Flash</span><span class="bar"><i style="width:7.2%"></i></span><span class="val" data-count="7.2" data-fmt="%">7.2%</span></div>
+            <div class="axis"><span></span><div><span>0%</span><span style="left:50%">50%</span><span style="left:100%">100%</span></div><span></span></div>
+            <p class="chart-note">Higher is better</p>
+          </div>
+        </div>
+      </div>
+      <div class="demo__spec"><h3>Panel + bar chart</h3><p>A 1px Ink border with a 24px title bar in Ink (or blue for accent) carrying mono 12–13px white text. Chart rows are 32px with Line hairlines; competitor bars are Bar grey, Skyfall's row is highlighted in Blue Tint with a blue bar and blue 500 text.</p>
+        <dl><dt>Animate</dt><dd>bars scaleX 0→1 · values count up · 1.4s power3.out · 0.08s stagger</dd><dt>Trigger</dt><dd>top 75% viewport, once; replays on tab change</dd><dt>Replay</dt><dd><button class="replay" data-replay="#chart-demo">Replay</button></dd></dl></div>
+      <div class="demo__stage demo__stage--studio" style="gap:32px;align-items:stretch">
+        <figure class="figure"><div class="figure__stage"><span class="figure__tag">FIG. 02</span><svg viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="#1a1a1a" stroke-width="1"><path d="M20 70l60-30 60 30-60 30z"/><path d="M20 70v-20l60-30 60 30v20"/><path d="M80 40v30"/><circle cx="80" cy="25" r="6" fill="#3e57da" stroke="none"/></svg></div><figcaption class="figure__cap"><b>Geometric &amp; spatial reasoning</b><span>Latent space abstractions over parts and assemblies.</span></figcaption></figure>
+        <div class="label-block" style="max-width:280px"><div class="mono-sm">Defining Moment In History</div><div class="t-body">Frontier accuracy at 1/150th the cost of LLMs.</div></div>
+      </div>
+      <div class="demo__spec"><h3>Figure + LabelBlock</h3><p>Figures hang from a 1px left Ink rule over a <code>dots-grey</code> field with an Ink tag badge in the top-left; the caption below pairs a 15px title with a 14px Muted note. LabelBlocks hang content from the same rule with an 11px capitalised mono caption and 32px of gap.</p>
+        <dl><dt>Rule</dt><dd>1px #1a1a1a · padding-left 10px</dd><dt>Tag</dt><dd>bg ink · mono 12/500 · px 6 py 2</dd></dl></div>
+      <div class="demo__stage demo__stage--block">
+        <div class="kpi"><h4 class="mono kpi__title">Building Information Models</h4><dl><div class="label-block label-block--dark" style="gap:12px"><dt class="mono-sm">vs. GPT-6 Astra</dt><dd><span class="n" data-count="119" data-fmt="×">119×</span><span class="c">faster</span></dd></div><div class="label-block label-block--dark" style="gap:12px"><dt class="mono-sm">per plan</dt><dd><span class="n" data-count="186" data-fmt="×">186×</span><span class="c">lower cost</span></dd></div><div class="label-block label-block--dark" style="gap:12px"><dt class="mono-sm">IoU</dt><dd><span class="n" data-count="43.6" data-fmt="%">43.6%</span><span class="c">accuracy</span></dd></div></dl><p class="kpi__foot">Compared to GPT-6 Astra</p></div>
+      </div>
+      <div class="demo__spec"><h3>KPI block</h3><p>Blue ground with a white grid field masked to fade downward; a hairline-bordered mono title; three dark LabelBlocks holding counted numbers at 34–104px and a 15–22px caption. The counters run from 0 over 1.4s when the block enters at 90% viewport.</p>
+        <dl><dt>Ground</dt><dd>#3e57da · grid #ffffff1a 32px</dd><dt>Numbers</dt><dd>Geist 500 · line-height 0.85</dd></dl></div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="grid-header"><h3 class="h-grid">Inputs</h3><span class="mono" style="color:var(--muted)">Lead and newsletter forms</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--block">
+        <div class="field-row">
+          <div class="f"><label for="i1">Full name<b>*</b></label><input id="i1" class="input" placeholder="Ada Lovelace"></div>
+          <div class="f"><label for="i2">Work email<b>*</b></label><input id="i2" class="input" type="email" value="ada@analytical" aria-invalid="true" aria-describedby="i2e"><p class="err" id="i2e">Enter a valid work email.</p></div>
+          <div class="f" style="grid-column:1/-1"><label for="i3">Message <small>Optional · 250 words</small></label><textarea id="i3" class="input" rows="3" placeholder="What are you building?"></textarea><p class="count">0 / 250</p></div>
+        </div>
+      </div>
+      <div class="demo__spec"><h3>Text input · Textarea</h3><p>48px square field with 14px side padding, paper fill and a 1px border at 25% Ink; label above in 15/500 with a blue asterisk. Hover deepens the border to 50% Ink; focus turns it blue and adds a 1px blue ring. Errors use <code>#c2362f</code> for border and message. Textareas resize vertically with a live word count.</p>
+        <dl><dt>Text</dt><dd>16px · tracking -0.02em</dd><dt>Placeholder</dt><dd>Ink at 35%</dd><dt>Focus</dt><dd>border #3e57da + ring 1px · no outline</dd><dt>Validate</dt><dd>on blur and submit · honeypot</dd></dl></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="grid-header"><h3 class="h-grid">Tabs</h3><span class="mono" style="color:var(--muted)">Mobile chart and film switcher</span></div>
+    <div class="demo">
+      <div class="demo__stage" style="flex-direction:column;align-items:flex-start;gap:0">
+        <div class="tabs" role="tablist" id="tabs-demo"><button role="tab" aria-selected="true">IoU</button><button role="tab" aria-selected="false">Time</button><button role="tab" aria-selected="false">Cost</button></div>
+        <div class="tabpanel panel" role="tabpanel"><div class="panel__bar"><span id="tab-title">IoU ↑</span><span style="color:rgb(255 255 255/.7)">BIM</span></div><div class="panel__body"><div class="row row--ours"><span>SKY-001</span><span class="bar"><i style="width:27%"></i></span><span class="val">27.2%</span></div><div class="row"><span>GPT-6 Astra</span><span class="bar"><i style="width:20%"></i></span><span class="val">20.4%</span></div></div></div>
+      </div>
+      <div class="demo__spec"><h3>Tabs</h3><p>Equal columns inside an Ink border with hairlines between, 44px tall, 15px text. The selected tab fills Ink with white text; hover fills Studio. Switching a chart tab replays its bar animation.</p>
+        <dl><dt>Height</dt><dd>44px (min touch)</dd><dt>Selected</dt><dd>bg #1a1a1a · text #fff</dd><dt>Visibility</dt><dd>below lg only; desktop shows all three charts</dd></dl></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="grid-header"><h3 class="h-grid">FAQ</h3><span class="mono" style="color:var(--muted)">Native details / summary</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--ink demo__stage--block">
+        <div class="faq">
+          <details open><summary><span>What is an Engineering World Model?</span><span class="faq__icon"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><p>A model that predicts how a physical system evolves across its construction steps, so an agent can plan against it instead of guessing from text.</p></details>
+          <details><summary><span>How is SKY-001 different from an LLM?</span><span class="faq__icon"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><p>It plans directly in the visual world and keeps spatial relationships consistent across thousands of parts.</p></details>
+          <details><summary><span>When can I get access?</span><span class="faq__icon"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><p>Join the waitlist; early partners are onboarded in cohorts.</p></details>
+        </div>
+      </div>
+      <div class="demo__spec"><h3>FAQ row</h3><p>On the ink ground with Night Mid hairlines. The summary is mono 13–14px with a 32px white square holding a 12px plus. When open, the text turns Blue Lift, the square turns blue with a white icon rotated 45°, and the 17–19px answer at 85% white expands beneath.</p>
+        <dl><dt>Row</dt><dd>min 56px · py 12</dd><dt>Transition</dt><dd>300ms colour, background, rotate</dd></dl></div>
+    </div>
+
+    <!-- Dialog -->
+    <div class="grid-header"><h3 class="h-grid">Dialog</h3><span class="mono" style="color:var(--muted)">#partnership · #join-waitlist · #launch-video</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--dots demo__stage--block" style="display:grid;place-items:center">
+        <div class="dlg"><div class="dlg__head"><span class="mono">Join the waitlist</span><button class="x" aria-label="Close">✕</button></div><div class="dlg__body"><div class="f"><label>Work email<b>*</b></label><input class="input" placeholder="you@company.com"></div><button class="btn btn--primary" style="width:100%"><span class="btn__panel"></span><span class="btn__sq"></span><span class="btn__label" data-scramble>Submit</span></button></div></div>
+      </div>
+      <div class="demo__spec"><h3>Lead dialog</h3><p>Native <code>&lt;dialog&gt;</code>, full-screen on mobile and a hairline-bordered rectangle centred on desktop (max 90dvh / 860px). 64px header with a 44px close target. Lead dialogs carry an animated dithered canvas header; the submit button is the primary button at full width on mobile.</p>
+        <dl><dt>Backdrop</dt><dd>rgb(26 26 26/.4) + blur 2px</dd><dt>Enter</dt><dd>sheet-up 420ms (mobile) · pop-in 320ms (desktop)</dd><dt>Scroll</dt><dd>Lenis stops while open</dd></dl></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="grid-header"><h3 class="h-grid">Footer</h3><span class="mono" style="color:var(--muted)">Hairline-boxed 2 × 2</span></div>
+    <div class="demo">
+      <div class="demo__stage demo__stage--block">
+        <div class="foot">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;gap:32px"><p class="tag">Engineering World Models for the Autonomous Enterprise.</p><svg viewBox="0 0 258 32" width="100%" fill="currentColor" style="max-width:420px"><use href="#skyfall-logo"/></svg></div>
+          <div><h5>Follow us</h5><a href="#">LinkedIn<i></i><em>↗</em></a><a href="#">X<i></i><em>↗</em></a><h5 style="margin-top:24px">Pages</h5><a href="#" data-scramble>SKY-001</a><a href="#" data-scramble>Blog</a></div>
+        </div>
+      </div>
+      <div class="demo__spec"><h3>Footer</h3><p>A hairline box split into tagline + full-width logo on the left and Pages / Follow / Contact on the right. Links are 17–18px in Body turning blue on hover; social links carry a dashed Slash rule that lifts to Ghost and an arrow that nudges. The legal line below is mono 12px uppercase in Muted.</p>
+        <dl><dt>Padding</dt><dd>24 → 40px per cell</dd><dt>Tagline</dt><dd>20 → 30px · 500 · blue slash</dd></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MOTION ═══════════════════════════ -->
+<section class="section section--studio" id="motion">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Motion</h2></div>
+    <p class="lede" style="margin-top:24px">Scroll-gated, masked and expo-eased. GSAP defaults to <code>expo.out</code> at 1s; CSS uses <code>cubic-bezier(.16, 1, .3, 1)</code>. Nothing bounces, and <code>prefers-reduced-motion</code> turns all of it off.</p>
+    <div class="motion" style="margin-top:40px">
+      <div><h3>Easing <button class="replay" data-replay="#ease-dot">Replay</button></h3><div class="stage" style="flex-direction:column;align-items:stretch"><svg class="ease-curve" viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M0 100 C 32 0, 60 0, 200 0" fill="none" stroke="#3e57da" stroke-width="1.5"/><path d="M0 100 C 44 0, 72 0, 200 0" fill="none" stroke="#c4c4c4" stroke-width="1" stroke-dasharray="3 3"/></svg><span id="ease-dot" class="sq" style="width:8px;height:8px;background:var(--brand);transition:transform 1s var(--ease-out-expo)"></span></div><code>ease-out-expo cubic-bezier(.16,1,.3,1)<br>ease-dialog cubic-bezier(.22,1,.36,1)<br>gsap expo.out · power3.out for counters</code></div>
+      <div><h3>FadeUp <button class="replay" data-replay="#fade-demo">Replay</button></h3><div class="stage"><div id="fade-demo" class="fade-target go" style="text-align:center"><p class="t-title">Revealed on scroll</p><p class="t-body-sm" style="margin-top:8px">autoAlpha 0 → 1, y 24 → 0</p></div></div><code>duration 1.1s · trigger top 85% · once<br>stagger 0.08–0.12s for children</code></div>
+      <div><h3>SplitReveal <button class="replay" data-replay="#split-demo">Replay</button></h3><div class="stage"><p id="split-demo" class="split go"><span class="line"><span>Lines rise</span></span><span class="line"><span>out of</span></span><span class="line"><span>their masks</span></span></p></div><code>SplitText mask:lines · yPercent 110 → 0<br>1.2s · stagger 0.09 · after fonts.ready</code></div>
+      <div><h3>Counter <button class="replay" data-replay="#count-demo">Replay</button></h3><div class="stage"><span id="count-demo" class="counter" data-count="186" data-fmt="×">186×</span></div><code>0 → n · 1.4s power3.out<br>trigger top 90% · tabular numerals</code></div>
+      <div><h3>Scramble <button class="replay" data-replay="#scramble-demo">Replay</button></h3><div class="stage"><span id="scramble-demo" class="t-button" data-scramble>Meet SKY-001</span></div><code>0.6s · chars !&lt;&gt;-_\/[]{}=+*^?#<br>hover-capable pointers only</code></div>
+      <div><h3>Bars <button class="replay" data-replay="#bars-demo">Replay</button></h3><div class="stage demo__stage--block" style="padding:12px"><div id="bars-demo" class="grow go" style="width:100%"><div class="row row--ours" style="margin:0"><span>SKY-001</span><span class="bar"><i style="width:76%"></i></span><span class="val">0.76 s</span></div><div class="row"><span>GPT-6</span><span class="bar"><i style="width:40%"></i></span><span class="val">72.6 s</span></div><div class="row" style="border:0"><span>Claude</span><span class="bar"><i style="width:22%"></i></span><span class="val">39.9 s</span></div></div></div><code>scaleX 0 → 1 · origin left<br>1.4s power3.out · stagger 0.08</code></div>
+      <div><h3>Button panel</h3><div class="stage"><a class="btn btn--primary" href="#"><span class="btn__panel"></span><span class="btn__sq"></span><span class="btn__label" data-scramble>Hover me</span></a></div><code>panel translateX -100% → 0 · 300ms expo-out<br>square rotate -180° · active scale .98</code></div>
+      <div><h3>Dialog <button class="replay" data-replay="#dlg-demo">Replay</button></h3><div class="stage dots"><div id="dlg-demo" class="dlg-demo go">pop-in</div></div><code>desktop pop-in 320ms · y16 scale .98<br>mobile sheet-up 420ms · backdrop fade 300ms</code></div>
+      <div><h3>Film ring</h3><div class="stage"><div class="ring"><div class="ring__in"><i style="--a:0deg"></i><i style="--a:36deg"></i><i style="--a:72deg"></i><i style="--a:108deg"></i><i style="--a:144deg"></i><i style="--a:180deg"></i><i style="--a:216deg"></i><i style="--a:252deg"></i><i style="--a:288deg"></i><i style="--a:324deg"></i></div></div></div><code>CSS 3D · 20 cards at 18° · 36s linear loop<br>pauses under reduced motion</code></div>
+    </div>
+    <ul class="cells cells--4" style="margin-top:24px">
+      <li><span class="cell-label mono">State</span><p class="cell-value">300ms colour, border, transform</p></li>
+      <li><span class="cell-label mono">Menu / stages</span><p class="cell-value">500ms clip-path · grid-rows</p></li>
+      <li><span class="cell-label mono">Image zoom</span><p class="cell-value">700ms · scale 1.03</p></li>
+      <li><span class="cell-label mono">Smooth scroll</span><p class="cell-value">Lenis lerp 0.1 · hash 1.4s · offset 72px</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ DO / DON'T ═══════════════════════════ -->
+<section class="section" id="rules">
+  <div class="container">
+    <div class="frame"><i></i><h2 class="h-section">Do's and don'ts</h2></div>
+    <div class="dd" style="margin-top:40px">
+      <div><h3><i></i>Do</h3><ul>
+        <li><b>Keep Skyfall Blue to signal:</b> current tab, hover, focus, selection, the active bar, dates, the <code>/</code> prefix.</li>
+        <li><b>Build groups as shared-border hairline grids</b> (<code>border-t border-l</code> on the list, <code>border-r border-b</code> on cells).</li>
+        <li><b>Set every label, tag, meta line and button in Geist Mono,</b> 11–15px, uppercase, −0.02em (or +0.05em at 11px).</li>
+        <li><b>Set headlines at weight 500,</b> −0.045em tracking, line-height under 1, capitalised.</li>
+        <li><b>Switch section grounds</b> (paper → studio → night → blue) to create rhythm.</li>
+        <li><b>Frame figures</b> with a left ink rule, corner brackets, corner dots or a dotted field.</li>
+        <li><b>Ease everything out on the expo curve</b> and gate reveals on scroll position.</li>
+        <li><b>Keep touch targets at 44px</b> and focus rings at 2px blue with 2px offset.</li>
+      </ul></div>
+      <div class="no"><h3 class="no"><i></i>Don't</h3><ul>
+        <li><b>Don't add border radius</b> to anything.</li>
+        <li><b>Don't add box shadows,</b> surface gradients or glassmorphism; the dialog backdrop blur is the one exception.</li>
+        <li><b>Don't introduce a second accent</b> or use pixel tones outside pixel icons.</li>
+        <li><b>Don't use the base blue for text on ink or night;</b> use Blue Lift <code>#6f83f0</code>.</li>
+        <li><b>Don't set body copy in mono</b> or labels in Geist.</li>
+        <li><b>Don't use weights above 600</b> or below 400.</li>
+        <li><b>Don't replace hairlines with spacing-only separation</b> inside grids; the lines are the structure.</li>
+        <li><b>Don't bounce, overshoot or spring;</b> motion decelerates and stops.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pagefoot">
+  <span>© 2026 Skyfall AI · design system extracted from the production site</span>
+  <span><a href="../../DESIGN.md">DESIGN.md</a> &nbsp;·&nbsp; <a href="../../.impeccable/design.json">design.json</a> &nbsp;·&nbsp; <a href="../research/BEHAVIORS.md">BEHAVIORS.md</a></span>
+</footer>
+
+<script>
+(() => {
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hoverable = matchMedia("(hover: hover)").matches;
+
+  /* ── Swatches ─────────────────────────────────────────────── */
+  const groups = {
+    "sw-primary": [
+      ["Skyfall Blue", "#3e57da", "The only hue. Current tab, button hover panel, focus ring, selection, active bar, dates, / prefix, blue ground."],
+      ["Skyfall Blue Lift", "#6f83f0", "Hover and open colour for text on ink and night grounds. Never on paper."],
+      ["Blue Tint", "#eef1fd", "Row highlight behind Skyfall's result in bar charts."],
+      ["Blue Ghost", "#b9c3f2", "Prose link underline at rest; dashed-rule hover in the footer."],
+      ["Blue Grid", "#3e57da1a", "1px grid lines of the GridField on light grounds (32px cells).", true],
+    ],
+    "sw-neutral": [
+      ["Paper", "#ffffff", "Page background, cards, nav, inputs.", true],
+      ["Studio", "#f6f6f6", "Alternate ground; hover fill for tabs and tiles; image placeholders.", true],
+      ["Ink", "#1a1a1a", "Headings, primary button, panel title bars, strong rules."],
+      ["Body", "#474747", "Running copy, ledes, footer links."],
+      ["Muted", "#7a7a7a", "Captions, chart axes, legal line, post counts."],
+      ["Faint", "#adadad", "Meta dots, mobile-menu index numbers."],
+      ["Slash", "#cccccc", "Dashed rules in the footer."],
+      ["Line", "#e0e0e0", "The default hairline on paper and studio.", true],
+      ["Dot", "#d4d4d4", "1px dots of the dots and dots-grey fields.", true],
+      ["Bar", "#c4c4c4", "Competitor bars in charts."],
+      ["Error", "#c2362f", "Invalid input border and message. Forms only."],
+      ["Ink 25 / 35 / 50", "rgb(26 26 26 / .25)", "Input border at rest · placeholder (35%) · hover (50%).", true],
+    ],
+    "sw-night": [
+      ["Night", "#1a1a1a", "Dark ground; FAQ and grid-dark sections."],
+      ["Night Mid", "#474747", "Hairlines on dark grounds; dialog borders in dark mode."],
+      ["Night Text", "#a3a3a3", "Secondary text on dark grounds."],
+    ],
+    "sw-pixel": [
+      ["Moss", "#4a5b46", "Pixel tone 1."], ["Sky", "#97abc5", "Pixel tone 2."], ["Clay", "#ca8f73", "Pixel tone 3."], ["Plum", "#84565c", "Pixel tone 4."],
+      ["Teal", "#6d8c8e", "Pixel tone 5."], ["Sand", "#cdad91", "Pixel tone 6."], ["Sage", "#a7b89f", "Pixel tone 7."],
+      ["Ghost", "mix 65% → white", "Each tone's inactive pixel colour: channel + (255 − channel) × 0.65.", true],
+    ],
+  };
+  const ghost = hex => { const n = parseInt(hex.slice(1, 7), 16); return "rgb(" + [n >> 16, (n >> 8) & 255, n & 255].map(c => Math.round(c + (255 - c) * .65)).join(",") + ")"; };
+  for (const [id, list] of Object.entries(groups)) {
+    const ul = document.getElementById(id);
+    for (const [name, hex, role, outline] of list) {
+      const li = document.createElement("li"); li.className = "swatch"; li.tabIndex = 0; li.setAttribute("role", "button"); li.setAttribute("aria-label", "Copy " + hex);
+      const isPixel = id === "sw-pixel" && hex.startsWith("#");
+      const chipBg = hex === "mix 65% → white" ? "linear-gradient(90deg,#4a5b46," + ghost("#4a5b46") + ")" : hex;
+      li.innerHTML = '<div class="swatch__chip' + (outline ? " swatch__chip--outline" : "") + '" style="background:' + chipBg + '"></div>' +
+        (isPixel ? '<div class="ramp"><span style="background:' + hex + '"></span><span style="background:' + ghost(hex) + '"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>' : "") +
+        '<div class="swatch__meta"><span class="swatch__name">' + name + '</span><span class="swatch__hex">' + hex + '</span><span class="swatch__role">' + role + '</span></div><span class="swatch__copied">Copied</span>';
+      li.addEventListener("click", () => copy(li, hex)); li.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copy(li, hex); } });
+      ul.appendChild(li);
+    }
+  }
+  function copy(el, text) { (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).catch(() => {}).finally(() => { el.classList.add("is-copied"); setTimeout(() => el.classList.remove("is-copied"), 1200); }); }
+
+  /* ── Pixel icons (maps from src/lib/skyfall/pixel-art.ts) ──── */
+  const maps = {
+    learn: ["..........", "#########.", "#.......#.", "#.#####.#.", "#.#...#.#.", "#.#.#.#.#.", "#.#...#.#.", "#.#####.#.", "#.......#.", "#########."],
+    simulate: ["..........", "###.......", "###.......", "###.......", ".#........", ".######...", "......#...", ".....###..", ".....###..", ".....###.."],
+    plan: ["..........", ".......##.", ".......##.", ".....###..", ".....#....", "...###....", "...#......", ".###......", ".#........", "##........"],
+    guardrails: ["..........", "#########.", "#.......#.", "#.#####.#.", "#.#...#.#.", "#.#.#.#.#.", ".#.#.#.#..", ".#..#..#..", "..#...#...", "...###...."],
+  };
+  document.querySelectorAll("[data-pixel]").forEach(svg => {
+    const rows = maps[svg.dataset.pixel]; const tone = svg.dataset.tone; const g = ghost(tone);
+    let html = ""; let order = [];
+    rows.forEach((row, y) => [...row].forEach((c, x) => { if (c === "#") { order.push([x, y]); html += '<rect x="' + (x * 8 + .5) + '" y="' + (y * 8 + .5) + '" width="7" height="7" fill="' + g + '" stroke="' + g + '" data-on="' + tone + '"></rect>'; } }));
+    svg.innerHTML = html;
+    const rects = [...svg.querySelectorAll("rect")];
+    const tile = svg.closest(".tile") || svg.parentElement;
+    const activate = on => { const seq = rects.slice().sort(() => Math.random() - .5); seq.forEach((r, i) => setTimeout(() => { r.setAttribute("fill", on ? tone : g); r.setAttribute("stroke", on ? tone : g); }, reduced ? 0 : i * 12)); };
+    if (!hoverable) activate(true);
+    tile.addEventListener("pointerenter", () => activate(true)); tile.addEventListener("pointerleave", () => hoverable && activate(false));
+  });
+
+  /* ── Scramble ──────────────────────────────────────────────── */
+  const CHARS = "!<>-_\\/[]{}=+*^?#";
+  function scramble(el) {
+    if (reduced || el.dataset.busy) return; const final = el.dataset.text || (el.dataset.text = el.textContent); el.dataset.busy = "1";
+    const start = performance.now(), dur = 600;
+    const tick = now => { const p = Math.min(1, (now - start) / dur); let out = ""; for (let i = 0; i < final.length; i++) { const ch = final[i]; out += ch === " " ? " " : (i / final.length < p ? ch : CHARS[Math.random() * CHARS.length | 0]); } el.textContent = out; if (p < 1) requestAnimationFrame(tick); else { el.textContent = final; delete el.dataset.busy; } };
+    requestAnimationFrame(tick);
+  }
+  document.querySelectorAll("[data-scramble]").forEach(el => { const host = el.closest("a,button") || el; host.addEventListener("pointerenter", () => hoverable && scramble(el)); });
+
+  /* ── Counters ─────────────────────────────────────────────── */
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  function count(el) {
+    const target = parseFloat(el.dataset.count), fmt = el.dataset.fmt || "", dec = (el.dataset.count.split(".")[1] || "").length;
+    if (reduced) { el.textContent = target.toFixed(dec) + fmt; return; }
+    const start = performance.now(), dur = 1400;
+    const tick = now => { const p = Math.min(1, (now - start) / dur); el.textContent = (target * ease(p)).toFixed(dec) + fmt; if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+  const seen = new WeakSet();
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting && !seen.has(e.target)) { seen.add(e.target); e.target.querySelectorAll("[data-count]").forEach(count); if (e.target.matches("[data-count]")) count(e.target); if (e.target.classList.contains("grow")) e.target.classList.add("go"); } }), { rootMargin: "0px 0px -10% 0px" });
+  document.querySelectorAll(".kpi, .grow, .counter").forEach(el => io.observe(el));
+
+  /* ── Replay buttons ─────────────────────────────────────────── */
+  document.querySelectorAll("[data-replay]").forEach(btn => btn.addEventListener("click", () => {
+    const el = document.querySelector(btn.dataset.replay); if (!el) return;
+    if (el.id === "ease-dot") { el.style.transform = "none"; requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transform = "translateX(160px)"; setTimeout(() => el.style.transform = "none", 1400); })); return; }
+    if (el.matches("[data-count]")) { count(el); return; }
+    if (el.matches("[data-scramble]")) { scramble(el); return; }
+    el.classList.remove("go"); el.querySelectorAll("[data-count]").forEach(c => c.textContent = "0" + (c.dataset.fmt || ""));
+    void el.offsetWidth; el.classList.add("go"); el.querySelectorAll("[data-count]").forEach(count);
+  }));
+
+  /* ── Tabs ─────────────────────────────────────────────────── */
+  const tabs = document.querySelectorAll("#tabs-demo [role=tab]"), titles = ["IoU ↑", "Time / plan ↓", "Cost / plan ↓"];
+  tabs.forEach((t, i) => t.addEventListener("click", () => { tabs.forEach(x => x.setAttribute("aria-selected", "false")); t.setAttribute("aria-selected", "true"); document.getElementById("tab-title").textContent = titles[i]; const p = t.closest(".demo__stage").querySelector(".tabpanel"); p.classList.remove("grow", "go"); void p.offsetWidth; p.classList.add("grow", "go"); }));
+
+  /* ── Textarea word count ──────────────────────────────────── */
+  const ta = document.getElementById("i3"); ta.addEventListener("input", () => { const n = ta.value.trim().split(/\s+/).filter(Boolean).length; ta.nextElementSibling.textContent = n + " / 250"; });
+
+  /* ── Halftone field (Canvas 2D stand-in for the WebGL cell shader) ── */
+  document.querySelectorAll("#hero-halftone, [data-halftone]").forEach(canvas => {
+    const ctx = canvas.getContext("2d"); let w, h, t0 = performance.now();
+    const resize = () => { const r = canvas.parentElement.getBoundingClientRect(); w = canvas.width = Math.max(1, r.width); h = canvas.height = Math.max(1, r.height); };
+    resize(); addEventListener("resize", resize);
+    const cell = 9;
+    const draw = now => {
+      const t = (now - t0) / 1000; ctx.clearRect(0, 0, w, h);
+      for (let y = 0; y < h; y += cell) for (let x = 0; x < w; x += cell) {
+        const nx = x / w - .5, ny = y / h - .5;
+        const v = .5 + .5 * Math.sin(nx * 9 + t * .7) * Math.cos(ny * 7 - t * .5) * Math.sin((nx + ny) * 5 + t * .3);
+        const fade = 1 - y / h; const s = Math.max(0, v * fade - .25) * cell * 1.1;
+        if (s > .6) { ctx.fillStyle = "rgba(26,26,26," + (0.08 + .22 * v * fade) + ")"; ctx.fillRect(x + (cell - s) / 2, y + (cell - s) / 2, s, s); }
+      }
+      if (!reduced) requestAnimationFrame(draw);
+    };
+    setTimeout(() => requestAnimationFrame(draw), 335);
+  });
+})();
+</script>
+</body>
+</html>
